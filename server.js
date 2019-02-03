@@ -1,12 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const mongoUri = require('./config/keys_dev').mongoUri;
-
-// routes
-const user = require('./routes/user');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+// Bodyparser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// routes
+const user = require('./routes/user');
 
 mongoose
   .connect(mongoUri)
