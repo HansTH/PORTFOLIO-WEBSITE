@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const mongoUri = require('./config/keys_dev').mongoUri;
+const mongoUri = require('./config/keys').mongoUri;
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 const user = require('./routes/user');
 
 mongoose
-  .connect(mongoUri)
+  .connect(mongoUri, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
