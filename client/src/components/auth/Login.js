@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextfieldInput from '../common/TextfieldInput';
 
 class Login extends Component {
   state = {
@@ -25,7 +26,7 @@ class Login extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, errors } = this.state;
     return (
       <div id='login' className='my-4'>
         <div className='container'>
@@ -36,26 +37,24 @@ class Login extends Component {
           <form onSubmit={this.handleOnSubmit}>
             <div className='form-group'>
               <span className='text-color'>* is requires</span>
-              <div className='form-control'>
-                <input
-                  type='email'
-                  placeholder='* E-mail'
-                  name='email'
-                  value={email}
-                  onChange={this.handleOnChange}
-                />
-                <span className='form-error'>This field is required.</span>
-              </div>
-              <div className='form-control'>
-                <input
-                  type='password'
-                  placeholder='* Password'
-                  name='password'
-                  value={password}
-                  onChange={this.handleOnChange}
-                />
-                <span className='form-error'>This field is required.</span>
-              </div>
+              <TextfieldInput
+                type='email'
+                placeholder='* Email'
+                name='email'
+                value={email}
+                onChange={this.handleOnChange}
+                errors={errors.email}
+              />
+
+              <TextfieldInput
+                type='password'
+                placeholder='* Password'
+                name='password'
+                value={password}
+                onChange={this.handleOnChange}
+                errors={errors.password}
+              />
+
               <div className='form-control my-2'>
                 <input type='submit' className='btn-light btn-hover' />
               </div>

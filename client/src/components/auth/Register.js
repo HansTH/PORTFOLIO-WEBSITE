@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+import TextfieldInput from '../common/TextfieldInput';
 
 class Register extends Component {
   state = {
@@ -25,11 +28,15 @@ class Register extends Component {
       password,
       password2
     };
-    console.log(newUser);
+
+    axios
+      .post('/api/user/register', newUser)
+      .then(res => console.log(res.data))
+      .catch(err => this.setState({ errors: err.response.data }));
   };
 
   render() {
-    const { name, email, password, password2 } = this.state;
+    const { name, email, password, password2, errors } = this.state;
     return (
       <div id='register' className='my-4'>
         <div className='container'>
@@ -37,49 +44,45 @@ class Register extends Component {
           <p className='lead text-center text-color display-1'>
             Create your account
           </p>
-          <form onSubmit={this.handleOnSubmit}>
+          <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>
               <span className='text-color'>* is requires</span>
-              <div className='form-control'>
-                <input
-                  type='text'
-                  placeholder='* Name'
-                  name='name'
-                  value={name}
-                  onChange={this.handleOnChange}
-                />
-                <span className='form-error'>This field is required.</span>
-              </div>
-              <div className='form-control'>
-                <input
-                  type='email'
-                  placeholder='* E-mail'
-                  name='email'
-                  value={email}
-                  onChange={this.handleOnChange}
-                />
-                <span className='form-error'>This field is required.</span>
-              </div>
-              <div className='form-control'>
-                <input
-                  type='password'
-                  placeholder='* Password'
-                  name='password'
-                  value={password}
-                  onChange={this.handleOnChange}
-                />
-                <span className='form-error'>This field is required.</span>
-              </div>
-              <div className='form-control'>
-                <input
-                  type='password'
-                  placeholder='* Confirm password'
-                  name='password2'
-                  value={password2}
-                  onChange={this.handleOnChange}
-                />
-                <span className='form-error'>This field is required.</span>
-              </div>
+              <TextfieldInput
+                type='text'
+                placeholder='* Name'
+                name='name'
+                value={name}
+                onChange={this.handleOnChange}
+                errors={errors.name}
+              />
+
+              <TextfieldInput
+                type='email'
+                placeholder='* Email'
+                name='email'
+                value={email}
+                onChange={this.handleOnChange}
+                errors={errors.email}
+              />
+
+              <TextfieldInput
+                type='password'
+                placeholder='* Password'
+                name='password'
+                value={password}
+                onChange={this.handleOnChange}
+                errors={errors.password}
+              />
+
+              <TextfieldInput
+                type='password'
+                placeholder='* Confirm password'
+                name='password2'
+                value={password2}
+                onChange={this.handleOnChange}
+                errors={errors.password2}
+              />
+
               <div className='form-control my-2'>
                 <input type='submit' className='btn-light btn-hover' />
               </div>
