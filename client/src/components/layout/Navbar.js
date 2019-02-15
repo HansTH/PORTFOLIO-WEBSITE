@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-// import '../../styles';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   render() {
@@ -10,9 +9,9 @@ class Navbar extends Component {
           <h1 className='logo text-primary'>Hans ter Horst</h1>
           <ul>
             <li>
-              <a className='text-color btn-hover' href='#home'>
+              <Link to={'/'} className='text-color btn-hover'>
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <a className='text-color btn-hover' href='#what'>
@@ -28,6 +27,16 @@ class Navbar extends Component {
               <a className='text-color btn-hover' href='#contact'>
                 Contact
               </a>
+            </li>
+            <li>
+              <Link to={'/login'} className='text-color btn-hover'>
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link to={'/register'} className='text-color btn-hover'>
+                Register
+              </Link>
             </li>
           </ul>
         </nav>
