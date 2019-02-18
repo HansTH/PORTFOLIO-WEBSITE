@@ -1,48 +1,87 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { logoutUser } from '../../redux/actions/authActions';
+
+// Redux
+import { connect } from 'react-redux';
 
 class Navbar extends Component {
+  logoutUser = e => {
+    e.preventDefault();
+    this.props.logoutUser(this.props.history);
+  };
+
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      <ul>
+        <li>
+          <Link to={'/dashboard'} className='text-color btn-hover'>
+            Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={'/'}
+            className='text-color btn-hover'
+            onClick={this.logoutUser}
+            style={{ cursor: 'pointer' }}>
+            Logout
+          </Link>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul>
+        <li>
+          <Link to={'/'} className='text-color btn-hover'>
+            Home
+          </Link>
+        </li>
+        <li>
+          <a className='text-color btn-hover' href='#what'>
+            What
+          </a>
+        </li>
+        <li>
+          <a className='text-color btn-hover' href='#who'>
+            Who
+          </a>
+        </li>
+        <li>
+          <a className='text-color btn-hover' href='#contact'>
+            Contact
+          </a>
+        </li>
+      </ul>
+    );
+
     return (
       <div className='nav-container nav-container-sticky'>
         <nav id='navbar'>
-          <h1 className='logo text-primary'>Hans ter Horst</h1>
-          <ul>
-            <li>
-              <Link to={'/'} className='text-color btn-hover'>
-                Home
-              </Link>
-            </li>
-            <li>
-              <a className='text-color btn-hover' href='#what'>
-                What
-              </a>
-            </li>
-            <li>
-              <a className='text-color btn-hover' href='#who'>
-                Who
-              </a>
-            </li>
-            <li>
-              <a className='text-color btn-hover' href='#contact'>
-                Contact
-              </a>
-            </li>
-            <li>
-              <Link to={'/login'} className='text-color btn-hover'>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to={'/register'} className='text-color btn-hover'>
-                Register
-              </Link>
-            </li>
-          </ul>
+          <Link to={'/'} className='logo text-primary'>
+            Hans ter Horst
+          </Link>
+          {isAuthenticated ? authLinks : guestLinks}
         </nav>
       </div>
     );
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(withRouter(Navbar));
