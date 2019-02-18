@@ -80,9 +80,9 @@ router.post('/login', (req, res) => {
   const password = req.body.password;
 
   User.findOne({ email }).then(user => {
-    errors.email = 'User not found';
     // check user excist
     if (!user) {
+      errors.email = 'User not found';
       return res.status(404).json(errors);
     }
 

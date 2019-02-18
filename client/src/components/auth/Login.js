@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Redux
+import { connect } from 'react-redux';
+import { loginUser } from '../../redux/actions/authActions';
+
 import TextfieldInput from '../common/TextfieldInput';
 
 class Login extends Component {
@@ -7,6 +13,16 @@ class Login extends Component {
     password: '',
     errors: {}
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
 
   handleOnChange = e => {
     this.setState({
@@ -18,11 +34,12 @@ class Login extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
-    const loginUser = {
+    const user = {
       email,
       password
     };
-    console.log(loginUser);
+
+    this.props.loginUser(user);
   };
 
   render() {
@@ -66,4 +83,18 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
