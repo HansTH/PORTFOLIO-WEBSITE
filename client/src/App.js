@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser, logoutUser } from './redux/actions/authActions';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from '../src/redux/store';
+import { setCurrentUser, logoutUser } from './redux/actions/authActions';
+import { clearProfile } from './redux/actions/profileActions';
 
 // components
 import Navbar from './components/layout/Navbar';
@@ -14,6 +15,7 @@ import Landing from './components/layout/Landing';
 import Footer from './components/layout/Footer';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from './components/dashboard/Dashboard';
 import './styles.css';
 
 // Check for token
@@ -30,6 +32,7 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // logout user
     store.dispatch(logoutUser());
+    store.dispatch(clearProfile());
 
     // redirect to login
     window.location.href = '/';
@@ -47,6 +50,7 @@ class App extends Component {
             <div className='container'>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/dashboard' component={Dashboard} />
             </div>
             <Footer />
           </div>
