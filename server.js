@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 
 // routes
 const user = require('./routes/user');
+const profile = require('./routes/profile');
 
 // Bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,5 +26,6 @@ mongoose
 
 // Use routes
 app.use('/api/user', user);
+app.use('/api/profile', profile);
 
 app.listen(port, () => console.log(`Server running on port: ${port}`));
