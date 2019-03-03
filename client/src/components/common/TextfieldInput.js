@@ -6,18 +6,29 @@ const TextfieldInput = ({
   value,
   onChange,
   errors,
+  info,
   type
 }) => {
   return (
     <div className='form-control'>
+      {errors && (
+        <div className='form-error'>
+          <span className='text-primary'>{errors}</span>
+        </div>
+      )}
       <input
         type={type}
         placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
+        rows='10'
       />
-      {errors && <span className='form-error'>{errors}</span>}
+      {info && (
+        <div className='form-info'>
+          <span className='text-color'>{info}</span>
+        </div>
+      )}
     </div>
   );
 };

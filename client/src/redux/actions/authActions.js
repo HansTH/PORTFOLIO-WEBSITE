@@ -31,7 +31,6 @@ export const loginUser = userData => dispatch => {
       // decode token to get user data
       const decoded = jwt_decode(token);
       // set cuurent user
-      console.log(decoded);
       dispatch(setCurrentUser(decoded));
     })
     .catch(err =>
@@ -58,5 +57,5 @@ export const logoutUser = history => dispatch => {
   setAuthToken(false);
   // set current user to empty object and set isAuthenticated to false
   dispatch(setCurrentUser({}));
-  // history.push('/');
+  history.push('/');
 };

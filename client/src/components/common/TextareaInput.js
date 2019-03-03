@@ -34,8 +34,8 @@ const TextareaInput = ({
 TextareaInput.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   errors: PropTypes.string,
   info: PropTypes.string
 };

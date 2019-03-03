@@ -21,6 +21,10 @@ class Loading extends Component {
     }, speed);
   }
 
+  componentWillUnmount() {
+    window.clearInterval(this.interval);
+  }
+
   render() {
     return (
       <div>
