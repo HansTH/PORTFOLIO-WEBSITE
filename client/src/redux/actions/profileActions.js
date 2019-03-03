@@ -20,6 +20,25 @@ export const getUserProfile = () => dispatch => {
     );
 };
 
+export const checkUserProfile = () => dispatch => {
+  dispatch(setProfileLoading());
+
+  axios
+    .get('/api/profile/user')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    );
+};
+
 // Profile loading
 export const setProfileLoading = () => {
   return {
