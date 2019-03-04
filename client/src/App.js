@@ -20,6 +20,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 import Showcase from './components/layout/Showcase';
+import AddSkill from './components/skills/AddSkill';
 
 import './styles.css';
 
@@ -71,6 +72,9 @@ class App extends Component {
                   path='/edit-profile'
                   component={EditProfile}
                 />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/add-skill' component={AddSkill} />
               </Switch>
             </div>
             <Route exact path='/' component={Showcase} />

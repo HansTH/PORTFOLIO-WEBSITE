@@ -8,6 +8,7 @@ const User = require('../models/User');
 
 // load validation
 const validateProfileInput = require('../validation/profile');
+const validateSkillInput = require('../validation/skill');
 
 // @route   GET api/profile/user
 // @desc    Get current user profile
@@ -131,6 +132,41 @@ router.delete(
       User.findOneAndRemove({ _id: req.user.id }).then(() => {
         res.json({ success: true });
       });
+    });
+  }
+);
+
+// SKILL
+//
+// @route   POST api/profile/skill
+// @desc    Add skill to profile
+// @access  Private
+router.post(
+  '/skill',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    // check validation
+    const { errors, isValid } = validateSkillInput(req.body);
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    let skillArray = [];
+    // skills, split into an array
+    if (typeof req.body.skills !== 'undefined') {
+      skillArray = req.body.skills.split(',');
+    }
+
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const newSkill = {
+        title: req.body.title,
+        skills: skillArray,
+        icon: req.body.icon
+      };
+
+      // add to experience profile
+      profile.skill.unshift(newSkill);
+      profile.save().then(profile => res.json(profile));
     });
   }
 );

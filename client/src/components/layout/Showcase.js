@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProfile } from '../../redux/actions/profileActions';
 import AboutMe from './sections/AboutMe';
+import Skills from './sections/Skills';
+import ContactMe from './sections/ContactMe';
 // Redux
 import { connect } from 'react-redux';
-import ContactMe from './sections/ContactMe';
 
 class Showcase extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class Showcase extends Component {
         showcaseContent = profile.map(item => (
           <div key={item._id}>
             <AboutMe bio={item.bio} />
+            <Skills skills={item.skill} />
             <ContactMe mobile={item.mobile} email={item.user._id} />
           </div>
         ));

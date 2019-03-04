@@ -109,3 +109,16 @@ export const deleteAccount = () => dispatch => {
       );
   }
 };
+
+// Add skill
+export const addSkill = (skillData, history) => dispatch => {
+  axios
+    .post('/api/profile/skill', skillData)
+    .then(res => history.push('./dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};

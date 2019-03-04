@@ -31,7 +31,23 @@ const ProfileSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  skill: [
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      skills: {
+        type: [String],
+        required: true
+      },
+      icon: {
+        type: String,
+        required: true
+      }
+    }
+  ]
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);
