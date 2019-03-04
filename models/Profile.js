@@ -7,6 +7,14 @@ const ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
+  fullname: {
+    type: String,
+    required: true
+  },
+  jobtitle: {
+    type: String,
+    required: true
+  },
   bio: {
     type: String
   },
@@ -17,7 +25,7 @@ const ProfileSchema = new Schema({
   github: {
     type: String
   },
-  mobiel: {
+  mobile: {
     type: String
   },
   date: {

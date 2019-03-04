@@ -6,6 +6,9 @@ const passport = require('passport');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 
+// load validation
+const validateProfileInput = require('../validation/profile');
+
 // @route   GET api/profile/user
 // @desc    Get current user profile
 // @access  Private
@@ -63,5 +66,73 @@ router.get('/user', (req, res) => {
     })
     .catch(err => res.status(404).json({ user: 'No user found' }));
 });
+
+// @route   POST api/profile
+// @desc    Create or Edit user profile
+// @access  Private
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    // check validation
+    const { errors, isValid } = validateProfileInput(req.body);
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    // get fields
+    const profileFields = {};
+    profileFields.user = req.user.id;
+
+    if (req.body.fullname) profileFields.fullname = req.body.fullname;
+    if (req.body.jobtitle) profileFields.jobtitle = req.body.jobtitle;
+    if (req.body.bio) profileFields.bio = req.body.bio;
+    if (req.body.mobile) profileFields.mobile = req.body.mobile;
+    if (req.body.github) profileFields.github = req.body.github;
+
+    // skills, split into an array
+    if (typeof req.body.skills !== 'undefined') {
+      profileFields.skills = req.body.skills.split(',');
+    }
+
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      if (profile) {
+        // update user
+        Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        ).then(profile => res.json(profile));
+      } else {
+        // check if handle exists
+        Profile.findOne({ handle: profileFields.handle }).then(profile => {
+          if (profile) {
+            errors.handle = 'That handle already exists.';
+            res.status(404).json(errors);
+          }
+
+          // create new user
+          new Profile(profileFields).save().then(profile => res.json(profile));
+        });
+      }
+    });
+  }
+);
+
+// DELETE PROFILE
+// @route   DELETE api/profile/
+// @desc    Delete user and profile
+// @access  Private
+router.delete(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() => {
+        res.json({ success: true });
+      });
+    });
+  }
+);
 
 module.exports = router;

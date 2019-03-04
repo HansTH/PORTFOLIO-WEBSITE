@@ -74,6 +74,15 @@ ul {
   font-weight: 300;
 }
 
+.btn-primary {
+  color: #29354e;
+  background: #f32d29;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+}
 .btn-light {
   color: #29354e;
   background: #d5d6d5;
@@ -113,6 +122,18 @@ ul {
 }
 .my-4 {
   margin: 4rem 0;
+}
+.mx-1 {
+  margin: 0 1rem;
+}
+.mx-2 {
+  margin: 0 2rem;
+}
+.mx-3 {
+  margin: 0 3rem;
+}
+.mx-4 {
+  margin: 0 4rem;
 }
 
 /* NAVBAR */
@@ -190,11 +211,12 @@ ul {
   height: 200px;
 }
 .form-error {
-  margin-top: 0.55rem;
+  margin-top: 0.75rem;
   padding-left: 0.25rem;
 }
 .form-info {
   padding-left: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 .form-control input::placeholder {
   font-size: 1rem;

@@ -2,18 +2,29 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from '../../redux/actions/profileActions';
 
+// Common input components
 import TextfieldInput from '../common/TextfieldInput';
 import TextareaInput from '../common/TextareaInput';
 
 class CreateProfile extends Component {
   state = {
+    fullname: '',
+    jobtitle: '',
     bio: '',
     skills: '',
     github: '',
-    mobiel: '',
+    mobile: '',
     errors: {}
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   handleOnChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -22,13 +33,19 @@ class CreateProfile extends Component {
     e.preventDefault();
 
     const profileData = {
-      bio: this.state.bio
+      fullname: this.state.fullname,
+      jobtitle: this.state.jobtitle,
+      bio: this.state.bio,
+      skills: this.state.skills,
+      github: this.state.github,
+      mobile: this.state.mobile
     };
     console.log(profileData);
+    this.props.createProfile(profileData, this.props.history);
   };
 
   render() {
-    const { value, errors } = this.state;
+    const { errors } = this.state;
     return (
       <div id='register' className='my-4'>
         <div className='container'>
@@ -42,33 +59,49 @@ class CreateProfile extends Component {
             <div className='form-group'>
               <span className='text-color'>* is requires</span>
               <TextfieldInput
-                placeholder='Your devloper skills'
+                placeholder='*Your full name'
+                name='fullname'
+                value={this.state.fullname}
+                onChange={this.handleOnChange}
+                errors={errors.fullname}
+                // info='Please use comma separated values (eg. HTML, CSS, PHP).'
+              />
+              <TextfieldInput
+                placeholder='*Your job title'
+                name='jobtitle'
+                value={this.state.jobtitle}
+                onChange={this.handleOnChange}
+                errors={errors.jobtitle}
+                // info='Please use cmma separated values (eg. HTML, CSS, PHP).'
+              />
+              <TextfieldInput
+                placeholder='*Your devloper skills'
                 name='skills'
-                value={value}
+                value={this.state.skills}
                 onChange={this.handleOnChange}
                 errors={errors.skills}
-                info='What are your best skills.'
+                info='Please use comma separated values (eg. HTML, CSS, PHP).'
               />
               <TextfieldInput
                 placeholder='GitHub account'
                 name='github'
-                value={value}
+                value={this.state.github}
                 onChange={this.handleOnChange}
                 errors={errors.github}
-                info='Tell us a little about yourself'
+                info='If you want to show your latest repos from GitHub, include your github username'
               />
               <TextfieldInput
-                placeholder='Mobiel number'
-                name='mobiel'
-                value={value}
+                placeholder='mobile number'
+                name='mobile'
+                value={this.state.mobile}
                 onChange={this.handleOnChange}
-                errors={errors.mobiel}
-                info='Your mobile number when people what to call you.'
+                errors={errors.mobile}
+                info='When people what to call you.'
               />
               <TextareaInput
                 placeholder='Bio'
                 name='bio'
-                value={value}
+                value={this.state.bio}
                 onChange={this.handleOnChange}
                 errors={errors.bio}
                 info='Tell us a little about yourself'
@@ -85,7 +118,8 @@ class CreateProfile extends Component {
 }
 
 CreateProfile.propTypes = {
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  createProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -94,5 +128,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {}
+  { createProfile }
 )(withRouter(CreateProfile));
