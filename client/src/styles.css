@@ -52,10 +52,21 @@ ul {
   text-align: center;
 }
 
+.text-light {
+  font-weight: 300;
+}
+.text-regular {
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: 0.05rem;
+}
 .text-bold {
   font-weight: 900;
 }
 
+.text-lowercase {
+  text-transform: lowercase;
+}
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -65,6 +76,15 @@ ul {
   color: #29354e;
 }
 
+.display-1 {
+  font-size: 1.25rem;
+}
+.display-2 {
+  font-size: 2rem;
+}
+.display-3 {
+  font-size: 3rem;
+}
 .display-4 {
   font-size: 4rem;
 }
@@ -162,19 +182,19 @@ ul {
   border-radius: 5px;
 }
 
-/* SHOWCASE */
-#showcase {
+/* Landing */
+#landing {
   background: url('./img/macbookProBlue.jpg') no-repeat center center/cover;
   height: 100vh;
 }
 
-#showcase .showcase-content {
+#landing .landing-content {
   display: flex;
   flex-direction: column;
   height: 100%;
   align-items: flex-end;
   justify-content: center;
-  /* text-align: end; */
+  text-align: end;
   width: 50%;
 }
 
@@ -222,4 +242,28 @@ ul {
   font-size: 1rem;
   font-weight: 400;
   /* color: #d5d6d5 !important; */
+}
+
+.section-container {
+  display: flex;
+  align-content: center;
+}
+.section-title {
+  border-right: 0.4rem solid #f32d29;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+}
+.section-subtitle {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  padding: 0 0.5rem;
+}
+
+.showcase-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

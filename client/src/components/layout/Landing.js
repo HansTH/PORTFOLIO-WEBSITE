@@ -84,8 +84,8 @@ class Landing extends Component {
     }
 
     return (
-      <header id='showcase'>
-        <div className='showcase-content'>{landingContent}</div>
+      <header id='landing'>
+        <div className='landing-content'>{landingContent}</div>
       </header>
     );
   }

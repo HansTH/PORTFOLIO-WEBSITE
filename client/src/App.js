@@ -19,6 +19,7 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
+import Showcase from './components/layout/Showcase';
 
 import './styles.css';
 
@@ -72,6 +73,7 @@ class App extends Component {
                 />
               </Switch>
             </div>
+            <Route exact path='/' component={Showcase} />
             <Footer />
           </div>
         </Router>
