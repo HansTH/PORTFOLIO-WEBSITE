@@ -18,7 +18,7 @@ class Skill extends Component {
     const skillContent =
       skill &&
       skill.map(skill => (
-        <div key={skill._id} className='text-center skill-item'>
+        <div key={skill._id} className='text-center skill-item withBorder-1'>
           <img src={skill.icon} alt={skill.title} style={{ width: '50px' }} />
           <h4>{skill.title}</h4>
           <ul>

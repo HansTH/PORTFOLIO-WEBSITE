@@ -18,16 +18,20 @@ class Portfolio extends Component {
     const portfolioContent =
       portfolio &&
       portfolio.map(item => (
-        <div key={item._id} className=' portfolio-item'>
+        <div key={item._id} className=' portfolio-item withBorder-1 p-1'>
           <div className='portfolio-image mx-1'>
-            <img src={item.appScreenshot} alt={item.appTitle} />
+            <img
+              src={item.appScreenshot}
+              alt={item.appTitle}
+              style={{ width: '300px' }}
+            />
           </div>
           <div className='portfolio-content mx-1'>
             <h4 className='text-primary display-1'>{item.appTitle}</h4>
             <p className='text-color my-0'>{item.appInfo}</p>
             <div style={{ display: 'flex', alignItems: 'baseline' }}>
               <h4 className='text-primary display-1'>Year </h4>
-              <p>&nbsp;{item.appYear}</p>
+              <p className='text-color'>&nbsp;{item.appYear}</p>
             </div>
             <h4 className='text-primary display-1 '>Skills</h4>
             <p className='text-color my-0'>{item.appSkills.join(' • ')}</p>

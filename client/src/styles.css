@@ -125,6 +125,34 @@ ul {
   transform: scale(0.99);
   transition: all 0.3s ease-in-out;
 }
+/* PADDING */
+.p-1 {
+  padding: 1rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.p-3 {
+  padding: 3rem;
+}
+.p-4 {
+  padding: 4rem;
+}
+.px-0 {
+  padding: 0 0.001rem;
+}
+.px-1 {
+  padding: 0 1rem;
+}
+.px-2 {
+  padding: 0 2rem;
+}
+.px-3 {
+  padding: 0 3rem;
+}
+.px-4 {
+  padding: 0 4rem;
+}
 
 .py-0 {
   padding: 0.001rem 0;
@@ -142,6 +170,20 @@ ul {
   padding: 4rem 0;
 }
 /* MARGIN */
+
+.m-1 {
+  margin: 1rem;
+}
+.m-2 {
+  margin: 2rem;
+}
+.m-3 {
+  margin: 3rem;
+}
+.m-4 {
+  margin: 4rem;
+}
+
 .my-0 {
   margin: 0.001rem 0;
 }
@@ -293,8 +335,6 @@ ul {
   flex-direction: column;
   align-items: center;
   margin: 1rem;
-  border: 2px solid #d5d6d5;
-  border-radius: 10px;
   padding: 1rem;
 }
 .portfolio-container {
@@ -304,19 +344,24 @@ ul {
   justify-content: center;
 }
 .portfolio-image {
-  width: 500px;
+  width: 50%;
+}
+.portfolio-image img {
+  padding: 1rem;
 }
 .portfolio-content {
   display: flex;
   flex-direction: column;
-  color: #d5d5d5;
+  width: 50%;
 }
 .portfolio-item {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 1rem;
-  border: 2px solid #d5d6d5;
+}
+
+.withBorder-1 {
+  border: 1px solid #d5d6d5;
   border-radius: 10px;
-  padding: 1rem;
 }

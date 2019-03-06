@@ -58,7 +58,7 @@ router.get('/user', (req, res) => {
       }
 
       Profile.find()
-        .populate('user', ['name', 'avatar'])
+        .populate('user', ['name', 'avatar', 'email'])
         .then(profile => {
           if (Object.keys(profile).length === 0) {
             res.json({ profile: user.map(name => name.name) });

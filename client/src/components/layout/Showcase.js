@@ -4,6 +4,8 @@ import { getProfile } from '../../redux/actions/profileActions';
 import AboutMe from './sections/AboutMe';
 import Skill from './sections/Skill';
 import ContactMe from './sections/ContactMe';
+import Portfolio from './sections/Portfolio';
+
 // Redux
 import { connect } from 'react-redux';
 
@@ -29,8 +31,9 @@ class Showcase extends Component {
         showcaseContent = profile.map(item => (
           <div key={item._id}>
             <AboutMe bio={item.bio} />
+            <Portfolio portfolio={item.portfolio} />
             <Skill skill={item.skill} />
-            <ContactMe mobile={item.mobile} email={item.user._id} />
+            <ContactMe mobile={item.mobile} email={item.user.email} />
           </div>
         ));
       }
