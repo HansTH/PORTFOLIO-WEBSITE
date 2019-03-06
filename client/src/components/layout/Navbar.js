@@ -64,7 +64,7 @@ class Navbar extends Component {
     return (
       <div className='nav-container nav-container-sticky'>
         <nav id='navbar'>
-          <Link to={'/'} className='logo text-primary'>
+          <Link to={'/dashboard'} className='logo text-primary'>
             Hans ter Horst
           </Link>
           {isAuthenticated ? authLinks : guestLinks}

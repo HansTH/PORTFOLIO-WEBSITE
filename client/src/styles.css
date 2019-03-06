@@ -93,24 +93,31 @@ ul {
   font-size: 1.5rem;
   font-weight: 300;
 }
-
-.btn-primary {
-  color: #29354e;
-  background: #f32d29;
+.btn-small {
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.btn {
   padding: 0.5rem 2rem;
   font-size: 1rem;
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.btn-primary {
+  color: #29354e;
+  background: #f32d29;
 }
 .btn-light {
   color: #29354e;
   background: #d5d6d5;
-  padding: 0.5rem 2rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 5px;
 }
 .btn-hover:hover {
   background-color: #f32d29;
@@ -268,9 +275,18 @@ ul {
   width: 100%;
 }
 
+.skill-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
 .skill-item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin: 1rem;
+  border: 2px solid #d5d6d5;
+  border-radius: 10px;
+  padding: 1rem;
 }

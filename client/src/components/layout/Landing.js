@@ -33,7 +33,7 @@ class Landing extends Component {
               You don't have a account, please register to create on.
             </p>
             <div>
-              <Link to={'/register'} className='btn-light btn-hover'>
+              <Link to={'/register'} className='btn btn-light btn-hover'>
                 Register
               </Link>
             </div>
@@ -52,7 +52,7 @@ class Landing extends Component {
             ))}
             <p className='lead text-color'>{item.jobtitle}</p>
             <div>
-              <Link to={'/login'} className='btn-light btn-hover'>
+              <Link to={'/login'} className='btn btn-light btn-hover'>
                 Login
               </Link>
             </div>
