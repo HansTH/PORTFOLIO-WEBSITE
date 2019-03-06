@@ -9,6 +9,7 @@ import {
 import Loading from '../common/Loading';
 import DashboardAction from './DashboardActions';
 import Skills from './Skills';
+import Portfolio from './Portfolio';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -19,7 +20,6 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
     const { deleteAccount } = this.props;
-
     let dashboardContent = {};
     if (profile === null || loading) {
       dashboardContent = <Loading />;
@@ -33,6 +33,7 @@ class Dashboard extends Component {
             <div>
               <DashboardAction />
               <Skills skill={profile.skill} />
+              <Portfolio portfolio={profile.portfolio} />
             </div>
             <div className='text-center my-4'>
               <button

@@ -21,6 +21,7 @@ import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 import Showcase from './components/layout/Showcase';
 import AddSkill from './components/skills/AddSkill';
+import AddPortfolio from './components/portfolio/AddPortfolio';
 
 import './styles.css';
 
@@ -75,6 +76,13 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path='/add-skill' component={AddSkill} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path='/add-portfolio'
+                  component={AddPortfolio}
+                />
               </Switch>
             </div>
             <Route exact path='/' component={Showcase} />
