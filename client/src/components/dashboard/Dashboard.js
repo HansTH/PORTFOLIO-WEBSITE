@@ -8,6 +8,7 @@ import {
 } from '../../redux/actions/profileActions';
 import Loading from '../common/Loading';
 import DashboardAction from './DashboardActions';
+import Skills from './Skills';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -31,6 +32,7 @@ class Dashboard extends Component {
             </h1>
             <div>
               <DashboardAction />
+              <Skills skill={profile.skill} />
             </div>
             <div className='text-center my-4'>
               <button

@@ -10,7 +10,7 @@ import TextfieldInput from '../common/TextfieldInput';
 class AddSkill extends Component {
   state = {
     title: '',
-    skill: '',
+    skills: '',
     icon: '',
     errors: {}
   };

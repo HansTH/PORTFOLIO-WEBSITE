@@ -171,4 +171,27 @@ router.post(
   }
 );
 
+// DELETE SKILL
+// @route   DELETE api/profile/skill/:exp_id
+// @desc    Delete skile from profile
+// @access  Private
+router.delete(
+  '/skill/:skill_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const deleteIndex = profile.skill
+          .map(item => item.id)
+          .indexOf(req.params.exp_id);
+
+        // splice out of skill array
+        profile.skill.splice(deleteIndex, 1);
+        // save new skill array
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
 module.exports = router;
