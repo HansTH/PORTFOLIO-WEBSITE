@@ -18,10 +18,6 @@ const ProfileSchema = new Schema({
   bio: {
     type: String
   },
-  skills: {
-    type: [String],
-    required: true
-  },
   github: {
     type: String
   },
@@ -44,6 +40,30 @@ const ProfileSchema = new Schema({
       },
       icon: {
         type: String,
+        required: true
+      }
+    }
+  ],
+  portfolio: [
+    {
+      appTitle: {
+        type: String,
+        required: true
+      },
+      appInfo: {
+        type: String,
+        required: true
+      },
+      appYear: {
+        type: String,
+        required: true
+      },
+      appScreenshot: {
+        type: String,
+        required: true
+      },
+      appSkills: {
+        type: [String],
         required: true
       }
     }

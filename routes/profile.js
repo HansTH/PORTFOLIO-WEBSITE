@@ -9,6 +9,7 @@ const User = require('../models/User');
 // load validation
 const validateProfileInput = require('../validation/profile');
 const validateSkillInput = require('../validation/skill');
+const validatePortfolioInput = require('../validation/portfolio');
 
 // @route   GET api/profile/user
 // @desc    Get current user profile
@@ -188,6 +189,65 @@ router.delete(
         // splice out of skill array
         profile.skill.splice(deleteIndex, 1);
         // save new skill array
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
+// PORTFOLIO
+//
+// @route   POST api/profile/portfolio
+// @desc    Add portfoilio to profile
+// @access  Private
+router.post(
+  '/portfolio',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    // check validation
+    const { errors, isValid } = validatePortfolioInput(req.body);
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    let skillArray = [];
+    // skills, split into an array
+    if (typeof req.body.appSkills !== 'undefined') {
+      skillArray = req.body.appSkills.split(',');
+    }
+
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const newPortfolio = {
+        appTitle: req.body.appTitle,
+        appSkills: skillArray,
+        appInfo: req.body.appInfo,
+        appScreenshot: req.body.appScreenshot,
+        appYear: req.body.appYear
+      };
+
+      // add to experience profile
+      profile.portfolio.unshift(newPortfolio);
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
+// @route   DELETE api/profile/portfolio/:exp_id
+// @desc    Delete porfolio from profile
+// @access  Private
+router.delete(
+  '/portfolio/:portfolio_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const deleteIndex = profile.portfolio
+          .map(item => item.id)
+          .indexOf(req.params.exp_id);
+
+        // splice out of portfolio array
+        profile.portfolio.splice(deleteIndex, 1);
+        // save new portfolio array
         profile.save().then(profile => res.json(profile));
       })
       .catch(err => res.status(404).json(err));
