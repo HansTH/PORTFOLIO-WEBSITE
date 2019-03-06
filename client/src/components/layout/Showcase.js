@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProfile } from '../../redux/actions/profileActions';
 import AboutMe from './sections/AboutMe';
-import Skills from './sections/Skills';
+import Skill from './sections/Skill';
 import ContactMe from './sections/ContactMe';
 // Redux
 import { connect } from 'react-redux';
@@ -10,6 +10,10 @@ import { connect } from 'react-redux';
 class Showcase extends Component {
   componentDidMount() {
     this.props.getProfile();
+
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
   }
 
   render() {
@@ -20,11 +24,12 @@ class Showcase extends Component {
     if (profile === null || loading) {
       showcaseContent = <h2>loading...</h2>;
     } else {
-      if (Object.keys(profile).length > 0 && profile[0]) {
+      showcaseContent = null;
+      if (Object.keys(profile).length > 0) {
         showcaseContent = profile.map(item => (
           <div key={item._id}>
             <AboutMe bio={item.bio} />
-            <Skills skills={item.skill} />
+            <Skill skill={item.skill} />
             <ContactMe mobile={item.mobile} email={item.user._id} />
           </div>
         ));
@@ -33,7 +38,7 @@ class Showcase extends Component {
 
     return (
       <header id='showcase'>
-        <div className='showcase-container'>{showcaseContent}</div>
+        <div className='container'>{showcaseContent}</div>
       </header>
     );
   }
@@ -45,6 +50,7 @@ Showcase.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  auth: state.auth,
   profile: state.profile
 });
 
