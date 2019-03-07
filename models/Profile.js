@@ -21,9 +21,6 @@ const ProfileSchema = new Schema({
   github: {
     type: String
   },
-  mobile: {
-    type: String
-  },
   date: {
     type: Date,
     default: Date.now
@@ -67,7 +64,19 @@ const ProfileSchema = new Schema({
         required: true
       }
     }
-  ]
+  ],
+  contactTitle: {
+    type: String,
+    required: true
+  },
+  contactNumber: {
+    type: String,
+    required: true
+  },
+  contactEmail: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

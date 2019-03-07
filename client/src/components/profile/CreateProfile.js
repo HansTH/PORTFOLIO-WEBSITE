@@ -15,7 +15,9 @@ class CreateProfile extends Component {
     bio: '',
     skills: '',
     github: '',
-    mobile: '',
+    contactNumber: '',
+    contactEmail: '',
+    contactTitle: '',
     errors: {}
   };
 
@@ -38,7 +40,9 @@ class CreateProfile extends Component {
       bio: this.state.bio,
       skills: this.state.skills,
       github: this.state.github,
-      mobile: this.state.mobile
+      contactEmail: this.state.contactEmail,
+      contactNumber: this.state.contactNumber,
+      contactTitle: this.state.contactTitle
     };
     console.log(profileData);
     this.props.createProfile(profileData, this.props.history);
@@ -91,11 +95,27 @@ class CreateProfile extends Component {
                 info='If you want to show your latest repos from GitHub, include your github username'
               />
               <TextfieldInput
-                placeholder='mobile number'
-                name='mobile'
-                value={this.state.mobile}
+                placeholder='Your mobile number'
+                name='contactEmail'
+                value={this.state.contactEmail}
                 onChange={this.handleOnChange}
-                errors={errors.mobile}
+                errors={errors.contactNumber}
+                info='When people want to call you.'
+              />
+              <TextfieldInput
+                placeholder='Your email'
+                name='contactEmail'
+                value={this.state.contactEmail}
+                onChange={this.handleOnChange}
+                errors={errors.contactEmail}
+                info='When people want to sent you a message.'
+              />
+              <TextfieldInput
+                placeholder='Contact title'
+                name='contactTitle'
+                value={this.state.contactTitle}
+                onChange={this.handleOnChange}
+                errors={errors.contactTitle}
                 info='When people what to call you.'
               />
               <TextareaInput

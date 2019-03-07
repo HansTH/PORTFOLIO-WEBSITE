@@ -33,7 +33,11 @@ class Showcase extends Component {
             <AboutMe bio={item.bio} />
             <Portfolio portfolio={item.portfolio} />
             <Skill skill={item.skill} />
-            <ContactMe mobile={item.mobile} email={item.user.email} />
+            <ContactMe
+              mobile={item.contactNumber}
+              email={item.contactEmail}
+              title={item.contactTitle}
+            />
           </div>
         ));
       }

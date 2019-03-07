@@ -7,6 +7,9 @@ module.exports = function validateProfileInput(data) {
   data.fullname = !isEmpty(data.fullname) ? data.fullname : '';
   data.jobtitle = !isEmpty(data.jobtitle) ? data.jobtitle : '';
   data.skills = !isEmpty(data.skills) ? data.skills : '';
+  data.contactNumber = !isEmpty(data.contactNumber) ? data.contactNumber : '';
+  data.contactEmail = !isEmpty(data.contactEmail) ? data.contactEmail : '';
+  data.contactTitle = !isEmpty(data.contactTitle) ? data.contactTitle : '';
 
   // full name
   if (validator.isEmpty(data.fullname)) {
@@ -21,6 +24,18 @@ module.exports = function validateProfileInput(data) {
   // skills
   if (validator.isEmpty(data.skills)) {
     errors.skills = 'Skills field is required.';
+  }
+  // contactNumber
+  if (validator.isEmpty(data.contactNumber)) {
+    errors.contactNumber = 'Mobile field is required.';
+  }
+  // contactEmail
+  if (validator.isEmpty(data.contactEmail)) {
+    errors.contactEmail = 'Email field is required.';
+  }
+  // contactTitle
+  if (validator.isEmpty(data.contactTitle)) {
+    errors.contactTitle = 'Title field is required.';
   }
 
   // website

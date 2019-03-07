@@ -19,7 +19,9 @@ class EditProfile extends Component {
     bio: '',
     skills: '',
     github: '',
-    mobile: '',
+    contactEmail: '',
+    contactNumber: '',
+    contactTitle: '',
     errors: {}
   };
 
@@ -34,7 +36,7 @@ class EditProfile extends Component {
 
     if (nextProps.profile.profile) {
       const profile = nextProps.profile.profile;
-
+      console.log(profile);
       // set skills back to a string
       const skillsString = profile.skills.join(',');
 
@@ -43,7 +45,15 @@ class EditProfile extends Component {
       profile.jobtitle = !isEmpty(profile.jobtitle) ? profile.jobtitle : '';
       profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
       profile.github = !isEmpty(profile.github) ? profile.github : '';
-      profile.mobile = !isEmpty(profile.mobile) ? profile.mobile : '';
+      profile.contactNumber = !isEmpty(profile.contactNumber)
+        ? profile.contactNumber
+        : '';
+      profile.contactEmail = !isEmpty(profile.contactEmail)
+        ? profile.contactEmail
+        : '';
+      profile.contactTitle = !isEmpty(profile.contactTitle)
+        ? profile.contactTitle
+        : '';
 
       // Set component input fields
       this.setState({
@@ -52,7 +62,9 @@ class EditProfile extends Component {
         bio: profile.bio,
         skills: skillsString,
         github: profile.github,
-        mobile: profile.mobile
+        contactNumber: profile.contactNumber,
+        contactEmail: profile.contactEmail,
+        contactTitle: profile.contactTitle
       });
     }
   }
@@ -70,7 +82,9 @@ class EditProfile extends Component {
       bio: this.state.bio,
       skills: this.state.skills,
       github: this.state.github,
-      mobile: this.state.mobile
+      contactTitle: this.state.contactTitle,
+      contactNumber: this.state.contactNumber,
+      contactEmail: this.state.contactEmail
     };
     this.props.createProfile(profileData, this.props.history);
   };
@@ -122,11 +136,27 @@ class EditProfile extends Component {
                 info='If you want to show your latest repos from GitHub, include your github username'
               />
               <TextfieldInput
-                placeholder='mobile number'
-                name='mobile'
-                value={this.state.mobile}
+                placeholder='Your mobile number'
+                name='contactNumber'
+                value={this.state.contactNumber}
                 onChange={this.handleOnChange}
-                errors={errors.mobile}
+                errors={errors.contactNumber}
+                info='When people want to call you.'
+              />
+              <TextfieldInput
+                placeholder='Your email'
+                name='contactEmail'
+                value={this.state.contactEmail}
+                onChange={this.handleOnChange}
+                errors={errors.contactEmail}
+                info='When people want to sent you a message.'
+              />
+              <TextfieldInput
+                placeholder='Contact title'
+                name='contactTitle'
+                value={this.state.contactTitle}
+                onChange={this.handleOnChange}
+                errors={errors.contactTitle}
                 info='When people what to call you.'
               />
               <TextareaInput

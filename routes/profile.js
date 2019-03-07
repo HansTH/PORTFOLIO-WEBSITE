@@ -89,8 +89,13 @@ router.post(
     if (req.body.fullname) profileFields.fullname = req.body.fullname;
     if (req.body.jobtitle) profileFields.jobtitle = req.body.jobtitle;
     if (req.body.bio) profileFields.bio = req.body.bio;
-    if (req.body.mobile) profileFields.mobile = req.body.mobile;
     if (req.body.github) profileFields.github = req.body.github;
+    if (req.body.contactTitle)
+      profileFields.contactTitle = req.body.contactTitle;
+    if (req.body.contactEmail)
+      profileFields.contactEmail = req.body.contactEmail;
+    if (req.body.contactNumber)
+      profileFields.contactNumber = req.body.contactNumber;
 
     // skills, split into an array
     if (typeof req.body.skills !== 'undefined') {
