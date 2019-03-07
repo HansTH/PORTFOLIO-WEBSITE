@@ -5,11 +5,11 @@ const Portfolio = ({ portfolio }) => {
   let portfolioContent = portfolio.map((item, index) =>
     index % 2 === 0 ? (
       <div key={item._id} className=' portfolio-item'>
-        <div className='portfolio-image'>
+        <div className='px-2'>
           <img
             src={item.appScreenshot}
             alt={item.appTitle}
-            style={{ width: '500px' }}
+            style={{ width: '400px' }}
           />
         </div>
         <div className='portfolio-content '>
@@ -51,7 +51,7 @@ const Portfolio = ({ portfolio }) => {
   );
 
   return (
-    <div>
+    <div id='work' className='container'>
       <SectionTitle title='Portfolio' subtitle='wat ik maak' />
       {portfolioContent}
     </div>

@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle';
 
 const ContactMe = ({ mobile, email, title }) => {
   return (
-    <div className='my-4'>
+    <div id='contact' className='my-4'>
       <SectionTitle title='Contact' subtitle='Hallo' />
       <p className='text-color text-light text-center display-2 my-2'>
         {title}

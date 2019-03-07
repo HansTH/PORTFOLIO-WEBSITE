@@ -13,7 +13,9 @@
   margin: 0;
   padding: 0;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: var(--bgColor);
   font-family: 'Lato', sans-serif;
@@ -212,24 +214,44 @@ ul {
   margin: 0 4rem;
 }
 
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0px;
+  background-color: transparent;
+  transition: top 0.3s;
+}
+
+.nav-container-sticky {
+  position: fixed;
+  opacity: 0.9;
+  z-index: 5;
+  border-bottom: 1px solid rgb(34, 43, 65);
+  top: -69px;
+}
+
 /* NAVBAR */
 #navbar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  position: fixed;
-  top: 0px;
-  z-index: 1;
   width: 100%;
+  background-color: #29354e;
+  /* margin: 0 2rem; */
 }
 #navbar .logo {
-  font-size: 1.5rem;
   text-transform: uppercase;
 }
 
 #navbar ul {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 #navbar ul li a {
@@ -240,7 +262,7 @@ ul {
 
 /* Landing */
 #landing {
-  background: url('./img/macbookProBlue.jpg') no-repeat center center/cover;
+  background: url('./img/macbookProBlue.jpg') no-repeat center right/cover;
   height: 100vh;
 }
 
@@ -252,13 +274,6 @@ ul {
   justify-content: center;
   text-align: end;
   width: 50%;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  overflow: hidden;
 }
 
 .form-group {
@@ -303,6 +318,7 @@ ul {
 .section-container {
   display: flex;
   align-content: center;
+  margin-top: 6rem;
 }
 .section-title {
   border-right: 0.4rem solid #f32d29;
@@ -347,7 +363,7 @@ ul {
   width: 50%;
 }
 .portfolio-image img {
-  padding: 1rem;
+  margin: 1rem;
 }
 .portfolio-content {
   display: flex;

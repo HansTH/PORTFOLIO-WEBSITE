@@ -50,12 +50,7 @@ class Landing extends Component {
                 {item}
               </h1>
             ))}
-            <p className='lead text-color'>{item.jobtitle}</p>
-            <div>
-              <Link to={'/login'} className='btn btn-light btn-hover'>
-                Login
-              </Link>
-            </div>
+            <p className='display-2 text-light  text-color'>{item.jobtitle}</p>
           </div>
         ));
       }

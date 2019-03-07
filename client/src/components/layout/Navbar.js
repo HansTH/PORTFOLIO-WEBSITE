@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { logoutUser } from '../../redux/actions/authActions';
 import { clearProfile } from '../../redux/actions/profileActions';
-
+import '../../utils/js/scripts';
 // Redux
 import { connect } from 'react-redux';
 
@@ -39,37 +39,40 @@ class Navbar extends Component {
     const guestLinks = (
       <ul>
         <li>
-          <Link to={'/'} className='text-color btn-hover'>
-            Home
-          </Link>
-        </li>
-        <li>
-          <a className='text-color btn-hover' href='#what'>
-            What
+          <a className='text-color btn-hover' href='#about'>
+            Over mij
           </a>
         </li>
         <li>
-          <a className='text-color btn-hover' href='#who'>
-            Who
+          <a className='text-color btn-hover' href='#work'>
+            Portfolio
+          </a>
+        </li>
+        <li>
+          <a className='text-color btn-hover' href='#skills'>
+            skills
           </a>
         </li>
         <li>
           <a className='text-color btn-hover' href='#contact'>
-            Contact
+            Hallo
           </a>
+        </li>
+        <li>
+          <Link to={'/login'} className='text-color btn-hover'>
+            Login
+          </Link>
         </li>
       </ul>
     );
 
     return (
-      <div className='nav-container nav-container-sticky'>
-        <nav id='navbar'>
-          <Link to={'/dashboard'} className='logo text-primary'>
-            Hans ter Horst
-          </Link>
-          {isAuthenticated ? authLinks : guestLinks}
-        </nav>
-      </div>
+      <nav id='navbar' className='nav-container nav-container-sticky py-1'>
+        <Link to={'/dashboard'} className='logo text-primary display-1 mx-2'>
+          Hans <span style={{ fontSize: '16px' }}>ter</span> Horst
+        </Link>
+        <div className='mx-2'>{isAuthenticated ? authLinks : guestLinks}</div>
+      </nav>
     );
   }
 }

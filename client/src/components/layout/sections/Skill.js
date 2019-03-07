@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle';
 
 const Skill = ({ skill }) => {
   return (
-    <div className='container '>
+    <div id='skills' className='container '>
       <SectionTitle title='Skills' subtitle='wat kan ik' />
       <div className='skill-container '>
         {skill.map(skill => (
