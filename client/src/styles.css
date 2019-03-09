@@ -2,9 +2,8 @@
 
 :root {
   --bgColor: #29354e;
-  --textColor: #d5d6d5;
+  --textColor: #bec2c9;
   --titleColor: #f32d29;
-  --navbarHeight: 52px;
 }
 
 /* GLOBAL */
@@ -15,11 +14,11 @@
 }
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 body {
   background-color: var(--bgColor);
   font-family: 'Lato', sans-serif;
-  font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -47,7 +46,7 @@ ul {
 }
 
 .text-color {
-  color: #d5d6d5;
+  color: #bec2c9;
 }
 
 .text-center {
@@ -93,7 +92,6 @@ ul {
 
 .lead {
   font-size: 1.5rem;
-  font-weight: 300;
 }
 .btn-small {
   padding: 0.25rem 1rem;
@@ -355,17 +353,23 @@ ul {
   margin: 1rem;
   padding: 1rem;
 }
+.skill-item img {
+  width: 7rem;
+}
+.skill-item h1 {
+  font-size: 1.5rem;
+}
 .portfolio-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 .portfolio-image {
   width: 50%;
 }
 .portfolio-image img {
-  margin: 1rem;
+  padding: 1rem;
 }
 .portfolio-content {
   display: flex;
@@ -376,7 +380,7 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1rem;
+  /* margin: 1rem; */
 }
 
 .withBorder-1 {
@@ -385,6 +389,9 @@ ul {
 }
 
 @media only screen and (max-width: 767px) {
+  html {
+    font-size: 13px;
+  }
   #nav {
     align-items: flex-start;
   }
@@ -413,5 +420,26 @@ ul {
 
   .active {
     display: none;
+  }
+
+  #landing .landing-content {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .portfolio-item {
+    flex-direction: column;
+  }
+  .portfolio-content {
+    width: 100%;
+  }
+  .portfolio-image {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 12px;
   }
 }

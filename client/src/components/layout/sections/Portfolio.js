@@ -3,14 +3,10 @@ import SectionTitle from './SectionTitle';
 
 const Portfolio = ({ portfolio }) => {
   let portfolioContent = portfolio.map((item, index) =>
-    index % 2 === 0 ? (
-      <div key={item._id} className=' portfolio-item'>
-        <div className='px-2'>
-          <img
-            src={item.appScreenshot}
-            alt={item.appTitle}
-            style={{ width: '400px' }}
-          />
+    index % 2 === 0 && window.innerWidth > 767 ? (
+      <div key={item._id} className=' portfolio-item my-1'>
+        <div className='portfolio-image my-2'>
+          <img src={item.appScreenshot} alt={item.appTitle} />
         </div>
         <div className='portfolio-content '>
           <h4 className='text-primary display-2'>{item.appTitle}</h4>
@@ -26,7 +22,7 @@ const Portfolio = ({ portfolio }) => {
         </div>
       </div>
     ) : (
-      <div key={item._id} className=' portfolio-item'>
+      <div key={item._id} className=' portfolio-item my-1'>
         <div className='portfolio-content '>
           <h4 className='text-primary display-2'>{item.appTitle}</h4>
           <p className='text-color my-0 display-1'>{item.appInfo}</p>
@@ -40,11 +36,7 @@ const Portfolio = ({ portfolio }) => {
           </p>
         </div>
         <div className='portfolio-image'>
-          <img
-            src={item.appScreenshot}
-            alt={item.appTitle}
-            style={{ width: '500px' }}
-          />
+          <img src={item.appScreenshot} alt={item.appTitle} />
         </div>
       </div>
     )
