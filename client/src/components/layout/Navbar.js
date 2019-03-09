@@ -4,16 +4,23 @@ import PropTypes from 'prop-types';
 import { logoutUser } from '../../redux/actions/authActions';
 import { clearProfile } from '../../redux/actions/profileActions';
 import '../../utils/js/scripts';
+
 // Redux
 import { connect } from 'react-redux';
 
 class Navbar extends Component {
+  state = {
+    toggle: true
+  };
   logoutUser = e => {
     e.preventDefault();
     this.props.clearProfile();
     this.props.logoutUser(this.props.history);
   };
 
+  toggleMenubar = () => {
+    this.setState({ toggle: !this.state.toggle });
+  };
   render() {
     const { isAuthenticated } = this.props.auth;
 
@@ -39,22 +46,34 @@ class Navbar extends Component {
     const guestLinks = (
       <ul>
         <li>
-          <a className='text-color btn-hover' href='#about'>
+          <a
+            onClick={this.toggleMenubar}
+            className='text-color btn-hover'
+            href='#about'>
             Over mij
           </a>
         </li>
         <li>
-          <a className='text-color btn-hover' href='#work'>
+          <a
+            onClick={this.toggleMenubar}
+            className='text-color btn-hover'
+            href='#work'>
             Portfolio
           </a>
         </li>
         <li>
-          <a className='text-color btn-hover' href='#skills'>
+          <a
+            onClick={this.toggleMenubar}
+            className='text-color btn-hover'
+            href='#skills'>
             skills
           </a>
         </li>
         <li>
-          <a className='text-color btn-hover' href='#contact'>
+          <a
+            onClick={this.toggleMenubar}
+            className='text-color btn-hover'
+            href='#contact'>
             Hallo
           </a>
         </li>
@@ -67,11 +86,20 @@ class Navbar extends Component {
     );
 
     return (
-      <nav id='navbar' className='nav-container nav-container-sticky py-1'>
+      <nav id='nav' className='nav-container nav-container-sticky py-1'>
         <Link to={'/dashboard'} className='logo text-primary display-1 mx-2'>
           Hans <span style={{ fontSize: '16px' }}>ter</span> Horst
         </Link>
-        <div className='mx-2'>{isAuthenticated ? authLinks : guestLinks}</div>
+        <div className='navbar mx-2'>
+          <a href='#home' id='menu' className='' onClick={this.toggleMenubar}>
+            <div className='menubar' />
+            <div className='menubar' />
+            <div className='menubar' />
+          </a>
+          <div className={this.state.toggle ? 'active' : 'navlinks'}>
+            {isAuthenticated ? authLinks : guestLinks}
+          </div>
+        </div>
       </nav>
     );
   }
