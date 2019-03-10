@@ -51,7 +51,7 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      appYear: {
+      appCategory: {
         type: String,
         required: true
       },

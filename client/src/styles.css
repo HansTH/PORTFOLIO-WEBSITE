@@ -117,7 +117,7 @@ ul {
 }
 .btn-light {
   color: #29354e;
-  background: #d5d6d5;
+  background: #bec2c9;
 }
 .btn-hover:hover {
   background-color: #f32d29;
@@ -368,7 +368,7 @@ ul {
   width: 50%;
 }
 .portfolio-image img {
-  /* padding: 1rem; */
+  padding: 1rem;
 }
 .portfolio-content {
   display: flex;
@@ -383,7 +383,7 @@ ul {
 }
 
 .withBorder-1 {
-  border: 1px solid #d5d6d5;
+  border: 1px solid #bec2c9;
   border-radius: 10px;
 }
 
@@ -412,7 +412,7 @@ ul {
   .menubar {
     width: 25px;
     height: 3px;
-    background-color: #d5d6d5;
+    background-color: #bec2c9;
     border-radius: 2px;
     margin: 5px 0;
   }

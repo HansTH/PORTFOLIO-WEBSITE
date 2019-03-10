@@ -32,8 +32,8 @@ class Dashboard extends Component {
             </h1>
             <div>
               <DashboardAction />
-              <Skills skill={profile.skill} />
               <Portfolio portfolio={profile.portfolio} />
+              <Skills skill={profile.skill} />
             </div>
             <div className='text-center my-4'>
               <button

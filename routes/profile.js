@@ -227,7 +227,7 @@ router.post(
         appSkills: skillArray,
         appInfo: req.body.appInfo,
         appScreenshot: req.body.appScreenshot,
-        appYear: req.body.appYear
+        appCategory: req.body.appCategory
       };
 
       // add to experience profile

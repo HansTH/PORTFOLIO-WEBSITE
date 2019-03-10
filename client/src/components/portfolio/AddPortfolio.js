@@ -12,7 +12,7 @@ class AddPortfolio extends Component {
   state = {
     appTitle: '',
     appInfo: '',
-    appYear: '',
+    appCategory: '',
     appScreenshot: '',
     appSkills: '',
     errors: {}
@@ -34,7 +34,7 @@ class AddPortfolio extends Component {
     const portfolioData = {
       appTitle: this.state.appTitle,
       appInfo: this.state.appInfo,
-      appYear: this.state.appYear,
+      appCategory: this.state.appCategory,
       appScreenshot: this.state.appScreenshot,
       appSkills: this.state.appSkills
     };
@@ -61,7 +61,7 @@ class AddPortfolio extends Component {
                 </Link>
               </div>
               <div>
-                <span className='text-color'>* is requires</span>
+                <span className='text-color'>* is required</span>
               </div>
               <TextfieldInput
                 placeholder='*App Title'
@@ -71,11 +71,12 @@ class AddPortfolio extends Component {
                 onChange={this.handleOnChange}
               />
               <TextfieldInput
-                placeholder='*App year'
-                name='appYear'
-                value={this.state.appYear}
-                errors={errors.appYear}
+                placeholder='*Category'
+                name='appCategory'
+                value={this.state.appCategory}
+                errors={errors.appCategory}
                 onChange={this.handleOnChange}
+                info='What kind of app (eg. Web, iOS, Android).'
               />
               <TextfieldInput
                 placeholder='*URL location'
@@ -92,12 +93,12 @@ class AddPortfolio extends Component {
                 onChange={this.handleOnChange}
               />
               <TextareaInput
-                placeholder='Info'
+                placeholder='*Info'
                 name='appInfo'
                 value={this.state.appInfo}
                 onChange={this.handleOnChange}
                 errors={errors.appInfo}
-                info='Tell us a little about this work'
+                info='Tell us a little about this project'
               />
               <div className='form-control my-2'>
                 <input type='submit' className='btn-light btn-hover' />

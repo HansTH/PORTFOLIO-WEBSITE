@@ -98,7 +98,7 @@ class EditProfile extends Component {
             Edit your Profile
           </h1>
           <p className='lead text-center text-color display-1'>
-            Let's get some information to make your profile stand out
+            Edit some information to make your profile better
           </p>
           <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>
@@ -108,7 +108,7 @@ class EditProfile extends Component {
                 </Link>
               </div>
               <div />
-              <span className='text-color'>* is requires</span>
+              <span className='text-color'>* is required</span>
               <TextfieldInput
                 placeholder='*Your full name'
                 name='fullname'
@@ -126,7 +126,7 @@ class EditProfile extends Component {
                 // info='Please use cmma separated values (eg. HTML, CSS, PHP).'
               />
               <TextfieldInput
-                placeholder='*Your devloper skills'
+                placeholder='*Your developer skills'
                 name='skills'
                 value={this.state.skills}
                 onChange={this.handleOnChange}
@@ -163,7 +163,7 @@ class EditProfile extends Component {
                 value={this.state.contactTitle}
                 onChange={this.handleOnChange}
                 errors={errors.contactTitle}
-                info='When people what to call you.'
+                info='Some highlight text for the title'
               />
               <TextareaInput
                 placeholder='Bio'

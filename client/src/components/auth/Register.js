@@ -67,7 +67,7 @@ class Register extends Component {
                 </Link>
               </div>
               <div />
-              <span className='text-color'>* is requires</span>
+              <span className='text-color'>* is required</span>
               <TextfieldInput
                 type='text'
                 placeholder='* Name'

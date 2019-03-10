@@ -67,7 +67,7 @@ class CreateProfile extends Component {
                 </Link>
               </div>
               <div />
-              <span className='text-color'>* is requires</span>
+              <span className='text-color'>* is required</span>
               <TextfieldInput
                 placeholder='*Your full name'
                 name='fullname'
@@ -85,7 +85,7 @@ class CreateProfile extends Component {
                 // info='Please use cmma separated values (eg. HTML, CSS, PHP).'
               />
               <TextfieldInput
-                placeholder='*Your devloper skills'
+                placeholder='*Your developer skills'
                 name='skills'
                 value={this.state.skills}
                 onChange={this.handleOnChange}
@@ -102,8 +102,8 @@ class CreateProfile extends Component {
               />
               <TextfieldInput
                 placeholder='Your mobile number'
-                name='contactEmail'
-                value={this.state.contactEmail}
+                name='contactNumber'
+                value={this.state.contactNumber}
                 onChange={this.handleOnChange}
                 errors={errors.contactNumber}
                 info='When people want to call you.'
@@ -122,7 +122,7 @@ class CreateProfile extends Component {
                 value={this.state.contactTitle}
                 onChange={this.handleOnChange}
                 errors={errors.contactTitle}
-                info='When people what to call you.'
+                info='Some highlight text for the title'
               />
               <TextareaInput
                 placeholder='Bio'

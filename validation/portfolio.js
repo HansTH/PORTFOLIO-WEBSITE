@@ -6,7 +6,7 @@ module.exports = function validatePortfolioInput(data) {
 
   data.appTitle = !isEmpty(data.appTitle) ? data.appTitle : '';
   data.appInfo = !isEmpty(data.appInfo) ? data.appInfo : '';
-  data.appYear = !isEmpty(data.appYear) ? data.appYear : '';
+  data.appCategory = !isEmpty(data.appCategory) ? data.appCategory : '';
   data.appScreenshot = !isEmpty(data.appScreenshot) ? data.appScreenshot : '';
   data.appDescription = !isEmpty(data.appDescription)
     ? data.appDescription
@@ -20,8 +20,8 @@ module.exports = function validatePortfolioInput(data) {
     errors.appInfo = 'Info field is required.';
   }
 
-  if (validator.isEmpty(data.appYear)) {
-    errors.appYear = 'Year of study field is required.';
+  if (validator.isEmpty(data.appCategory)) {
+    errors.appCategory = 'Category field is required.';
   }
 
   if (validator.isEmpty(data.appScreenshot)) {

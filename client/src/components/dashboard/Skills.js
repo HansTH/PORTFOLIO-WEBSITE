@@ -53,7 +53,9 @@ class Skill extends Component {
         <h4 className='my-1 text-center text-color display-2'>Skills</h4>
         <div className='skill-container'>
           {skillContent && skillContent.length === 0 ? (
-            <p className='text-color display-1'>Please add some skills.</p>
+            <p className='text-color display-1'>
+              Add your developer or programming skills.
+            </p>
           ) : (
             skillContent
           )}

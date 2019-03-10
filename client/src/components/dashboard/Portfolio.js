@@ -26,8 +26,8 @@ class Portfolio extends Component {
             <h4 className='text-primary display-1'>{item.appTitle}</h4>
             <p className='text-color my-0'>{item.appInfo}</p>
             <div style={{ display: 'flex', alignItems: 'baseline' }}>
-              <h4 className='text-primary display-1'>Year </h4>
-              <p className='text-color'>&nbsp;{item.appYear}</p>
+              <h4 className='text-primary display-1'>Category </h4>
+              <p className='text-color'>&nbsp;- {item.appCategory}</p>
             </div>
             <h4 className='text-primary display-1 '>Skills</h4>
             <p className='text-color my-0'>{item.appSkills.join(' • ')}</p>
@@ -54,7 +54,9 @@ class Portfolio extends Component {
         <h4 className='text-center text-color display-2'>Portfolio</h4>
         <div className=''>
           {portfolioContent && portfolioContent.length === 0 ? (
-            <p className='text-color display-1'>Please add your best work.</p>
+            <p className='text-color text-center display-1'>
+              Add your best work.
+            </p>
           ) : (
             portfolioContent
           )}
