@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
@@ -59,6 +60,12 @@ class Login extends Component {
           </p>
           <form onSubmit={this.handleOnSubmit}>
             <div className='form-group'>
+              <div className='my-2'>
+                <Link to='/' className='btn btn-light'>
+                  Go Back
+                </Link>
+              </div>
+              <div />
               <span className='text-color'>* is requires</span>
               <TextfieldInput
                 type='email'

@@ -46,7 +46,7 @@ class AddSkill extends Component {
             Add your skills
           </h1>
           <p className='lead text-center text-color display-1'>
-            Add any developer/programming skills
+            Add any developer or programming skills
           </p>
           <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>

@@ -48,7 +48,7 @@ class AddPortfolio extends Component {
       <div id='add-skill' className=' my-4'>
         <div className='container'>
           <h1 className='text-center text-primary display-4'>
-            Add work your Portfolio
+            Add to your Portfolio
           </h1>
           <p className='lead text-center text-color display-1'>
             Add your best Work

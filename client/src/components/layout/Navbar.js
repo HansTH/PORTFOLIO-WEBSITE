@@ -88,7 +88,7 @@ class Navbar extends Component {
     return (
       <nav id='nav' className='nav-container nav-container-sticky py-1'>
         <Link to={'/dashboard'} className='logo text-primary display-1 mx-2'>
-          Hans <span style={{ fontSize: '16px' }}>ter</span> Horst
+          Hans ter Horst
         </Link>
         <div className='navbar mx-2'>
           <a href='#home' id='menu' className='' onClick={this.toggleMenubar}>

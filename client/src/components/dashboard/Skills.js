@@ -19,11 +19,18 @@ class Skill extends Component {
       skill &&
       skill.map(skill => (
         <div key={skill._id} className='text-center skill-item withBorder-1'>
-          <img src={skill.icon} alt={skill.title} style={{ width: '50px' }} />
-          <h4>{skill.title}</h4>
+          <img
+            src={skill.icon}
+            alt={skill.title}
+            style={{ width: '5rem' }}
+            className='my-1'
+          />
+          <h4 className='text-color lead'>{skill.title}</h4>
           <ul>
             {skill.skills.map(skill => (
-              <li key={skill}>{skill}</li>
+              <div key={skill} className='text-color display-1'>
+                <li>{skill}</li>
+              </div>
             ))}
           </ul>
           <button

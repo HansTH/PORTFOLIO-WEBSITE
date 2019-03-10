@@ -18,13 +18,9 @@ class Portfolio extends Component {
     const portfolioContent =
       portfolio &&
       portfolio.map(item => (
-        <div key={item._id} className=' portfolio-item withBorder-1 p-1'>
-          <div className='portfolio-image mx-1'>
-            <img
-              src={item.appScreenshot}
-              alt={item.appTitle}
-              style={{ width: '300px' }}
-            />
+        <div key={item._id} className='portfolio-item withBorder-1 my-1'>
+          <div className='portfolio-image'>
+            <img src={item.appScreenshot} alt={item.appTitle} />
           </div>
           <div className='portfolio-content mx-1'>
             <h4 className='text-primary display-1'>{item.appTitle}</h4>
@@ -55,8 +51,8 @@ class Portfolio extends Component {
 
     return (
       <div className='my-4'>
-        <h4 className='my-1 text-center text-color display-2'>Portfolio</h4>
-        <div className='skill-container'>
+        <h4 className='text-center text-color display-2'>Portfolio</h4>
+        <div className=''>
           {portfolioContent && portfolioContent.length === 0 ? (
             <p className='text-color display-1'>Please add your best work.</p>
           ) : (

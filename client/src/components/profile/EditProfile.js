@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -102,6 +102,12 @@ class EditProfile extends Component {
           </p>
           <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>
+              <div className='my-2'>
+                <Link to='/dashboard' className='btn btn-light'>
+                  Go Back
+                </Link>
+              </div>
+              <div />
               <span className='text-color'>* is requires</span>
               <TextfieldInput
                 placeholder='*Your full name'

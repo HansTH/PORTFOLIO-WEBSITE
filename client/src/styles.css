@@ -368,7 +368,7 @@ ul {
   width: 50%;
 }
 .portfolio-image img {
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 .portfolio-content {
   display: flex;
@@ -379,7 +379,7 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* margin: 1rem; */
+  padding: 1rem;
 }
 
 .withBorder-1 {
@@ -421,6 +421,12 @@ ul {
     display: none;
   }
 
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
   #landing .landing-content {
     width: 100%;
     padding: 0 2rem;
@@ -434,6 +440,13 @@ ul {
   }
   .portfolio-image {
     width: 100%;
+  }
+  .dashboard-action-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .dashboard-action-container a {
+    margin: 0.5rem;
   }
 }
 
