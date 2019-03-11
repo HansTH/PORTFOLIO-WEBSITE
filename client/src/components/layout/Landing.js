@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { checkUserProfile } from '../../redux/actions/profileActions';
+import Loading from '../common/Loading';
 
 // Redux
 import { connect } from 'react-redux';
@@ -21,7 +22,7 @@ class Landing extends Component {
     let landingContent = {};
 
     if (profile === null || loading) {
-      landingContent = <h2>loading...</h2>;
+      landingContent = <Loading />;
     } else {
       if (profile) {
         landingContent = (

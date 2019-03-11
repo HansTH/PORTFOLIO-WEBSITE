@@ -5,6 +5,7 @@ import AboutMe from './sections/AboutMe';
 import Skill from './sections/Skill';
 import ContactMe from './sections/ContactMe';
 import Portfolio from './sections/Portfolio';
+import Loading from '../common/Loading';
 
 // Redux
 import { connect } from 'react-redux';
@@ -24,7 +25,7 @@ class Showcase extends Component {
     let showcaseContent = {};
 
     if (profile === null || loading) {
-      showcaseContent = <h2>loading...</h2>;
+      showcaseContent = <Loading />;
     } else {
       showcaseContent = null;
       if (Object.keys(profile).length > 0) {
