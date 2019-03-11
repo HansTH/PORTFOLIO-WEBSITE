@@ -1,0 +1,462 @@
+/* - - - VARIABELS - - - */
+
+:root {
+  --bgColor: #29354e;
+  --textColor: #bec2c9;
+  --titleColor: #f32d29;
+}
+
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+body {
+  background-color: var(--bgColor);
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0.8rem 0;
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+/* UTILITY CLASSES */
+
+.text-primary {
+  color: #f32d29;
+}
+
+.text-color {
+  color: #bec2c9;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  font-weight: 300;
+}
+.text-regular {
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: 0.05rem;
+}
+.text-bold {
+  font-weight: 900;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.bg-dark {
+  background-color: #f32d29;
+  color: #29354e;
+}
+
+.display-1 {
+  font-size: 1.25rem;
+}
+.display-2 {
+  font-size: 2rem;
+}
+.display-3 {
+  font-size: 3rem;
+}
+.display-4 {
+  font-size: 4rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+}
+.btn-small {
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.btn {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.btn-primary {
+  color: #29354e;
+  background: #f32d29;
+}
+.btn-light {
+  color: #29354e;
+  background: #bec2c9;
+}
+.btn-hover:hover {
+  background-color: #f32d29;
+  color: #29354e;
+  transform: scale(0.99);
+  transition: all 0.3s ease-in-out;
+}
+/* PADDING */
+.p-1 {
+  padding: 1rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.p-3 {
+  padding: 3rem;
+}
+.p-4 {
+  padding: 4rem;
+}
+.px-0 {
+  padding: 0 0.001rem;
+}
+.px-1 {
+  padding: 0 1rem;
+}
+.px-2 {
+  padding: 0 2rem;
+}
+.px-3 {
+  padding: 0 3rem;
+}
+.px-4 {
+  padding: 0 4rem;
+}
+
+.py-0 {
+  padding: 0.001rem 0;
+}
+.py-1 {
+  padding: 1rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+.py-3 {
+  padding: 3rem 0;
+}
+.py-4 {
+  padding: 4rem 0;
+}
+/* MARGIN */
+
+.m-1 {
+  margin: 1rem;
+}
+.m-2 {
+  margin: 2rem;
+}
+.m-3 {
+  margin: 3rem;
+}
+.m-4 {
+  margin: 4rem;
+}
+
+.my-0 {
+  margin: 0.001rem 0;
+}
+.my-1 {
+  margin: 1rem 0;
+}
+.my-2 {
+  margin: 2rem 0;
+}
+.my-3 {
+  margin: 3rem 0;
+}
+.my-4 {
+  margin: 4rem 0;
+}
+.mx-1 {
+  margin: 0 1rem;
+}
+.mx-2 {
+  margin: 0 2rem;
+}
+.mx-3 {
+  margin: 0 3rem;
+}
+.mx-4 {
+  margin: 0 4rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0px;
+  transition: top 0.3s;
+}
+
+.nav-container-sticky {
+  position: fixed;
+  /* opacity: 0.9; */
+  /* z-index: 5; */
+  border-bottom: 1px solid rgb(34, 43, 65);
+  top: -69px;
+}
+
+/* NAVBAR */
+#menu {
+  display: none;
+}
+#nav {
+  background-color: #29354ef5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#nav .logo {
+  text-transform: uppercase;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar ul li a {
+  padding: 0.8rem;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+/* Landing */
+#landing {
+  background: url('./img/macbookProBlue.jpg') no-repeat center right/cover;
+  height: 100vh;
+}
+
+#landing .landing-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: end;
+  width: 50%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5rem;
+}
+
+.form-group span {
+  align-items: flex-start;
+}
+
+.form-control input,
+.form-control textarea {
+  margin: 0.25rem 0 0.25rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1.25rem;
+  color: #29354e;
+  font-weight: 400;
+  border-radius: 5px;
+  border: none;
+}
+
+.form-control textarea {
+  height: 200px;
+}
+.form-error {
+  margin-top: 0.75rem;
+  padding-left: 0.25rem;
+}
+.form-info {
+  padding-left: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+.form-control input::placeholder {
+  font-size: 1rem;
+  font-weight: 400;
+  /* color: #d5d6d5 !important; */
+}
+
+.section-container {
+  display: flex;
+  align-content: center;
+  margin-top: 6rem;
+}
+.section-title {
+  border-right: 0.4rem solid #f32d29;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+}
+.section-subtitle {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  padding: 0 0.5rem;
+}
+
+.showcase-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.skill-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+.skill-item img {
+  width: 7rem;
+}
+.skill-item h1 {
+  font-size: 1.5rem;
+}
+.portfolio-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.portfolio-image {
+  width: 50%;
+}
+.portfolio-image img {
+  padding: 1rem;
+}
+.portfolio-content {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.portfolio-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+}
+
+.withBorder-1 {
+  border: 1px solid #bec2c9;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  html {
+    font-size: 13px;
+  }
+  #nav {
+    align-items: flex-start;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .navlinks ul {
+    flex-direction: column;
+  }
+  .navlinks li {
+    text-align: right;
+    padding: 1rem 0;
+  }
+  #menu {
+    display: block;
+  }
+  .menubar {
+    width: 25px;
+    height: 3px;
+    background-color: #bec2c9;
+    border-radius: 2px;
+    margin: 5px 0;
+  }
+
+  .active {
+    display: none;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
+  #landing .landing-content {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .portfolio-item {
+    flex-direction: column;
+  }
+  .portfolio-content {
+    width: 100%;
+  }
+  .portfolio-image {
+    width: 100%;
+  }
+  .dashboard-action-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .dashboard-action-container a {
+    margin: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  html {
+    font-size: 10px;
+  }
+}
