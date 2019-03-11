@@ -3,6 +3,8 @@ package-lock.json
 keys_dev.js
 /build
 
+.vscode
+
 .DS_Store
 .env.local
 .env.development.local
