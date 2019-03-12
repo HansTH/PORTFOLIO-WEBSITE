@@ -206,7 +206,7 @@ export const deletePortfolio = id => dispatch => {
 };
 
 // Get portfolio
-export const getPortfolio = id => dispatch => {
+export const getportfolioItem = id => dispatch => {
   axios
     .get(`/api/profile/portfolio/${id}`)
     .then(res =>

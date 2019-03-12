@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deletePortfolio } from '../../redux/actions/profileActions';
+import {
+  deletePortfolio,
+  getportfolioItem
+} from '../../redux/actions/profileActions';
 
 class Portfolio extends Component {
   handleDeletePortfolio = id => {
@@ -9,7 +13,7 @@ class Portfolio extends Component {
   };
 
   handleEditPortfolio = id => {
-    console.log(id);
+    this.props.getportfolioItem(id);
   };
 
   render() {
@@ -32,12 +36,12 @@ class Portfolio extends Component {
             <h4 className='text-primary display-1 '>Skills</h4>
             <p className='text-color my-0'>{item.appSkills.join(' • ')}</p>
             <div className='my-1' style={{ display: 'flex' }}>
-              <button
-                type='button'
+              <Link
+                to={'/add-edit-portfolio'}
                 className='btn-light btn-small'
                 onClick={() => this.handleEditPortfolio(item._id)}>
                 Edit
-              </button>
+              </Link>
               <button
                 type='button'
                 className='btn-primary btn-small mx-1'
@@ -67,10 +71,11 @@ class Portfolio extends Component {
 }
 
 Portfolio.propTypes = {
-  portfolio: PropTypes.array.isRequired
+  portfolio: PropTypes.array.isRequired,
+  getportfolioItem: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { deletePortfolio }
+  { deletePortfolio, getportfolioItem }
 )(Portfolio);
