@@ -144,8 +144,9 @@ router.delete(
 
 // SKILL
 //
-// @route   POST api/profile/skill
-// @desc    Add skill to profile
+// ADD OR UPDATE SKILL
+// @route   POST api/profile/skill/
+// @desc    Add or Update skill
 // @access  Private
 router.post(
   '/skill',
@@ -157,28 +158,40 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    let skillArray = [];
+    // get fields
+    const skillFields = {};
+    if (req.body.title) skillFields.title = req.body.title;
+    if (req.body.icon) skillFields.icon = req.body.icon;
+
     // skills, split into an array
     if (typeof req.body.skills !== 'undefined') {
-      skillArray = req.body.skills.split(',');
+      skillFields.skills = req.body.skills.split(',');
     }
 
-    Profile.findOne({ user: req.user.id }).then(profile => {
-      const newSkill = {
-        title: req.body.title,
-        skills: skillArray,
-        icon: req.body.icon
-      };
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        if (profile) {
+          // get index of the skill in the array
+          const skillIndex = profile.skill
+            .map(item => item.id)
+            .indexOf(req.body.id);
 
-      // add to experience profile
-      profile.skill.unshift(newSkill);
-      profile.save().then(profile => res.json(profile));
-    });
+          // check if index exists
+          if (skillIndex != -1) {
+            profile.skill.splice(skillIndex, 1, skillFields);
+          } else {
+            profile.skill.unshift(skillFields);
+          }
+          // save the new profile
+          profile.save().then(profile => res.json(profile));
+        }
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 
 // DELETE SKILL
-// @route   DELETE api/profile/skill/:exp_id
+// @route   DELETE api/profile/skill/:skill_id
 // @desc    Delete skile from profile
 // @access  Private
 router.delete(
@@ -189,12 +202,35 @@ router.delete(
       .then(profile => {
         const deleteIndex = profile.skill
           .map(item => item.id)
-          .indexOf(req.params.exp_id);
-
+          .indexOf(req.params.skill_id);
+        console.log(deleteIndex);
         // splice out of skill array
         profile.skill.splice(deleteIndex, 1);
         // save new skill array
         profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
+// GET SKILL
+// @route   GET api/profile/skill/:skill_id
+// @desc    Get skile by ID
+// @access  Private
+router.get(
+  '/skill/:skill_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const skillIndex = profile.skill
+          .map(item => item.id)
+          .indexOf(req.params.skill_id);
+
+        // splice out of skill array
+        const skill = profile.skill[skillIndex];
+        // return the skill item
+        res.json(skill);
       })
       .catch(err => res.status(404).json(err));
   }
