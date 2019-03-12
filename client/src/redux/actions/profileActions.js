@@ -4,7 +4,8 @@ import {
   PROFILE_LOADING,
   CLEAR_PROFILE,
   GET_ERRORS,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  GET_ITEM
 } from '../actions/types';
 
 // Get profile
@@ -110,6 +111,19 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
+// Edit skill
+export const addEditSkill = (skillData, history) => dispatch => {
+  axios
+    .post('/api/profile/skill/', skillData)
+    .then(res => history.push('./dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Add skill
 export const addSkill = (skillData, history) => dispatch => {
   axios
@@ -122,6 +136,7 @@ export const addSkill = (skillData, history) => dispatch => {
       })
     );
 };
+
 // Delete skill
 export const deleteSkill = id => dispatch => {
   axios
@@ -129,6 +144,24 @@ export const deleteSkill = id => dispatch => {
     .then(res =>
       dispatch({
         type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Get skill
+export const getSkill = id => dispatch => {
+  axios
+    .get(`/api/profile/skill/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_ITEM,
         payload: res.data
       })
     )
