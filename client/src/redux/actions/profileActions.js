@@ -204,3 +204,34 @@ export const deletePortfolio = id => dispatch => {
       })
     );
 };
+
+// Get portfolio
+export const getportfolioItem = id => dispatch => {
+  axios
+    .get(`/api/profile/portfolio/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_ITEM,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Add or Edit Porfolio
+export const addEditPortfolio = (portfolioData, history) => dispatch => {
+  axios
+    .post('/api/profile/portfolio/', portfolioData)
+    .then(res => history.push('./dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
