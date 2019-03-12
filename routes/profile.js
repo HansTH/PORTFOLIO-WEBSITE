@@ -238,8 +238,32 @@ router.get(
 
 // PORTFOLIO
 //
-// @route   POST api/profile/portfolio
-// @desc    Add portfoilio to profile
+// GET PORTFOLIO
+// @route   GET api/profile/portfolio/:portfolio_id
+// @desc    Get portfolio by ID
+// @access  Private
+router.get(
+  '/portfolio/:portfolio_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const portfolioIndex = profile.portfolio
+          .map(item => item.id)
+          .indexOf(req.params.portfolio_id);
+
+        // splice out of portfolio array
+        const portfolio = profile.portfolio[portfolioIndex];
+        // return the portfolio item
+        res.json(portfolio);
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
+// ADD OR UPDATE PORTFOLIO
+// @route   POST api/profile/portfolio/
+// @desc    Add or Update portfilio
 // @access  Private
 router.post(
   '/portfolio',
@@ -251,25 +275,39 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    let skillArray = [];
-    // skills, split into an array
+    // get fields
+    const portfolioFields = {};
+    if (req.body.appTitle) portfolioFields.appTitle = req.body.appTitle;
+    if (req.body.appInfo) portfolioFields.appInfo = req.body.appInfo;
+    if (req.body.appCategory)
+      portfolioFields.appCategory = req.body.appCategory;
+    if (req.body.appScreenshot)
+      portfolioFields.appScreenshot = req.body.appScreenshot;
+
+    // appSkills, split into an array
     if (typeof req.body.appSkills !== 'undefined') {
-      skillArray = req.body.appSkills.split(',');
+      portfolioFields.appSkills = req.body.appSkills.split(',');
     }
 
-    Profile.findOne({ user: req.user.id }).then(profile => {
-      const newPortfolio = {
-        appTitle: req.body.appTitle,
-        appSkills: skillArray,
-        appInfo: req.body.appInfo,
-        appScreenshot: req.body.appScreenshot,
-        appCategory: req.body.appCategory
-      };
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        if (profile) {
+          // get index of the portfolio in the array
+          const portfolioIndex = profile.portfolio
+            .map(item => item.id)
+            .indexOf(req.body.id);
 
-      // add to experience profile
-      profile.portfolio.unshift(newPortfolio);
-      profile.save().then(profile => res.json(profile));
-    });
+          // check if index exists
+          if (portfolioIndex != -1) {
+            profile.portfolio.splice(portfolioIndex, 1, portfolioFields);
+          } else {
+            profile.portfolio.unshift(portfolioFields);
+          }
+          // save the new profile
+          profile.save().then(profile => res.json(profile));
+        }
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 
