@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteSkill } from '../../redux/actions/profileActions';
+import { deleteSkill, getSkill } from '../../redux/actions/profileActions';
 
 class Skill extends Component {
   handleDeleteSkill = id => {
@@ -9,7 +10,7 @@ class Skill extends Component {
   };
 
   handleEditSkill = id => {
-    console.log(id);
+    this.props.getSkill(id);
   };
 
   render() {
@@ -33,12 +34,12 @@ class Skill extends Component {
               </div>
             ))}
           </ul>
-          <button
-            type='button'
+          <Link
+            to={'/edit-skill'}
             className='btn-light btn-small my-1'
             onClick={() => this.handleEditSkill(skill._id)}>
             Edit
-          </button>
+          </Link>
           <button
             type='button'
             className='btn-primary btn-small'
@@ -67,10 +68,11 @@ class Skill extends Component {
 
 Skill.propTypes = {
   skill: PropTypes.array.isRequired,
-  deleteSkill: PropTypes.func.isRequired
+  deleteSkill: PropTypes.func.isRequired,
+  getSkill: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { deleteSkill }
+  { deleteSkill, getSkill }
 )(Skill);

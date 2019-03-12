@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { addEditSkill } from '../../redux/actions/profileActions';
+import isEmpty from '../../utils/isEmpty';
 
 // Components
 import TextfieldInput from '../common/TextfieldInput';
 
-class AddSkill extends Component {
+class EditSkill extends Component {
   state = {
+    id: '',
     title: '',
     skills: '',
     icon: '',
@@ -18,6 +20,23 @@ class AddSkill extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+
+    if (nextProps.profile.item) {
+      const skill = nextProps.profile.item;
+
+      const skillsString = skill.skills.join(',');
+      skill.id = !isEmpty(skill._id) ? skill._id : '';
+      skill.title = !isEmpty(skill.title) ? skill.title : '';
+      skill.icon = !isEmpty(skill.icon) ? skill.icon : '';
+      skill.skills = skillsString;
+
+      this.setState({
+        id: skill.id,
+        title: skill.title,
+        icon: skill.icon,
+        skills: skill.skills
+      });
     }
   }
 
@@ -29,6 +48,7 @@ class AddSkill extends Component {
     e.preventDefault();
 
     const skillData = {
+      id: this.state.id,
       title: this.state.title,
       skills: this.state.skills,
       icon: this.state.icon
@@ -39,14 +59,15 @@ class AddSkill extends Component {
 
   render() {
     const { errors } = this.state;
+
     return (
       <div id='add-skill' className=' my-4'>
         <div className='container'>
           <h1 className='text-center text-primary display-4'>
-            Add your skills
+            Edit your skill
           </h1>
           <p className='lead text-center text-color display-1'>
-            Add any developer or programming skills
+            Edit your developer or programming skill
           </p>
           <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>
@@ -90,16 +111,18 @@ class AddSkill extends Component {
   }
 }
 
-AddSkill.propTypes = {
+EditSkill.propTypes = {
+  profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   addEditSkill: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
+  profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
   { addEditSkill }
-)(withRouter(AddSkill));
+)(withRouter(EditSkill));
