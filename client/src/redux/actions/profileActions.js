@@ -268,3 +268,22 @@ export const deleteExperience = id => dispatch => {
       });
     });
 };
+
+// Get experience by id.
+// Get portfolio
+export const getExperienceItem = id => dispatch => {
+  axios
+    .get(`/api/profile/experience/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_ITEM,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};

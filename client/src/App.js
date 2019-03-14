@@ -100,7 +100,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact
-                  path='/add-experience'
+                  path='/add-edit-experience'
                   component={CreateEditExperience}
                 />
               </Switch>

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteExperience, getSkill } from '../../redux/actions/profileActions';
+import {
+  deleteExperience,
+  getExperienceItem
+} from '../../redux/actions/profileActions';
 import Moment from 'react-moment';
 
 class Experience extends Component {
@@ -12,7 +15,7 @@ class Experience extends Component {
   };
 
   handleEditExperience = id => {
-    this.props.getSkill(id);
+    this.props.getExperienceItem(id);
   };
 
   render() {
@@ -36,7 +39,7 @@ class Experience extends Component {
             </td>
             <td>
               <Link
-                to={'/edit-experience'}
+                to={'/add-edit-experience'}
                 className='btn-light btn-small'
                 onClick={() => this.handleEditExperience(exp._id)}>
                 Edit
@@ -81,5 +84,5 @@ class Experience extends Component {
 
 export default connect(
   null,
-  { deleteExperience }
+  { deleteExperience, getExperienceItem }
 )(Experience);

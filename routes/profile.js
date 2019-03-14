@@ -348,19 +348,35 @@ router.post(
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    Profile.findOne({ user: req.user.id }).then(profile => {
-      const newExperience = {
-        companyName: req.body.companyName,
-        companyCity: req.body.companyCity,
-        companyStart: req.body.companyStart,
-        companyEnd: req.body.companyEnd,
-        companyCurrent: req.body.companyCurrent,
-        companyJobTitle: req.body.companyJobTitle,
-        companyJobInfo: req.body.companyJobInfo
-      };
-      profile.experience.unshift(newExperience);
-      profile.save().then(profile => res.json(profile));
-    });
+
+    const expFields = {};
+    if (req.body.companyName) expFields.companyName = req.body.companyName;
+    if (req.body.companyCity) expFields.companyCity = req.body.companyCity;
+    if (req.body.companyStart) expFields.companyStart = req.body.companyStart;
+    if (req.body.companyEnd) expFields.companyEnd = req.body.companyEnd;
+    if (req.body.companyCurrent)
+      expFields.companyCurrent = req.body.companyCurrent;
+    if (req.body.companyJobTitle)
+      expFields.companyJobTitle = req.body.companyJobTitle;
+    if (req.body.companyJobInfo)
+      expFields.companyJobInfo = req.body.companyJobInfo;
+
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        if (profile) {
+          const expIndex = profile.experience
+            .map(item => item.id)
+            .indexOf(req.body.id);
+
+          if (expIndex != -1) {
+            profile.experience.splice(expIndex, 1, expFields);
+          } else {
+            profile.experience.unshift(expFields);
+          }
+          profile.save().then(profile => res.json(profile));
+        }
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 
@@ -385,4 +401,25 @@ router.delete(
   }
 );
 
+// @route   GET api/profile/experience/:exp_id
+// @desc    Get experience by ID
+// @access  Private
+router.get(
+  '/experience/:exp_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const experienceIndex = profile.experience
+          .map(item => item.id)
+          .indexOf(req.params.exp_id);
+
+        // splice out of experience array
+        const experience = profile.experience[experienceIndex];
+        // return the experience item
+        res.json(experience);
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
 module.exports = router;

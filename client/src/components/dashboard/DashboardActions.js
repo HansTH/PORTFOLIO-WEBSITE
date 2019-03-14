@@ -16,7 +16,9 @@ const DashboardActions = () => {
         </Link>
       </div>
       <div className='my-2'>
-        <Link to='/add-experience' className='btn btn-light btn-hover mx-1'>
+        <Link
+          to='/add-edit-experience'
+          className='btn btn-light btn-hover mx-1'>
           <i className='fas fa-magic text-info mr-1' /> Add Experience
         </Link>
       </div>

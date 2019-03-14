@@ -3,26 +3,60 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createEditExperience } from '../../redux/actions/profileActions';
+import moment from 'moment';
 
 // Common input components
 import TextfieldInput from '../common/TextfieldInput';
 import TextareaInput from '../common/TextareaInput';
+import isEmpty from '../../utils/isEmpty';
 
 class CreateEditExperience extends Component {
   state = {
+    id: '',
     companyName: '',
     companyCity: '',
     companyStart: '',
     companyCurrent: false,
     companyEnd: '',
-    companyJobtitel: '',
+    companyJobTitle: '',
     companyJobInfo: '',
     isDisabled: false,
-      errors: {}
+    errors: {}
   };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+
+    if (nextProps.profile.item) {
+      const exp = nextProps.profile.item;
+      exp._id = !isEmpty(exp._id) ? exp._id : '';
+      exp.companyName = !isEmpty(exp.companyName) ? exp.companyName : '';
+      exp.companyCity = !isEmpty(exp.companyCity) ? exp.companyCity : '';
+      exp.companyStart = !isEmpty(exp.companyStart) ? exp.companyStart : '';
+      exp.companyEnd = !isEmpty(exp.companyEnd) ? exp.companyEnd : '';
+      exp.companyCurrent = !isEmpty(exp.companyCurrent)
+        ? exp.companyCurrent
+        : '';
+      exp.companyJobTitle = !isEmpty(exp.companyJobTitle)
+        ? exp.companyJobTitle
+        : '';
+      exp.companyJobInfo = !isEmpty(exp.companyJobInfo)
+        ? exp.companyJobInfo
+        : '';
+      console.log(exp);
+
+      this.setState({
+        id: exp._id,
+        companyName: exp.companyName,
+        companyCity: exp.companyCity,
+        companyStart: exp.companyStart,
+        companyCurrent: exp.companyCurrent,
+        companyEnd: exp.companyEnd,
+        companyJobTitle: exp.companyJobTitle,
+        companyJobInfo: exp.companyJobInfo,
+        isDisabled: exp.companyCurrent
+      });
+    }
   }
 
   handleOnCheck = () => {
@@ -42,6 +76,7 @@ class CreateEditExperience extends Component {
     e.preventDefault();
 
     const experienceData = {
+      id: this.state.id,
       companyName: this.state.companyName,
       companyCity: this.state.companyCity,
       companyStart: this.state.companyStart,
@@ -56,6 +91,7 @@ class CreateEditExperience extends Component {
 
   render() {
     const { errors } = this.state;
+
     return (
       <div id='experience' className='my-4'>
         <div className='container'>
@@ -98,7 +134,9 @@ class CreateEditExperience extends Component {
               <TextfieldInput
                 type='date'
                 name='companyStart'
-                value={this.state.companyStart}
+                value={moment(this.state.companyStart, 'YYYY-MM-DD').format(
+                  'YYYY-MM-DD'
+                )}
                 onChange={this.handleOnChange}
                 errors={errors.companyStart}
                 info='When you start working'
@@ -117,7 +155,13 @@ class CreateEditExperience extends Component {
               <TextfieldInput
                 type='date'
                 name='companyEnd'
-                value={this.state.companyEnd}
+                value={
+                  this.state.companyEnd !== ''
+                    ? moment(this.state.companyEnd, 'YYYY-MM-DD').format(
+                        'YYYY-MM-DD'
+                      )
+                    : ''
+                }
                 onChange={this.handleOnChange}
                 errors={errors.companyEnd}
                 disabled={this.state.isDisabled ? 'disabled' : ''}
@@ -144,11 +188,13 @@ class CreateEditExperience extends Component {
 
 CreateEditExperience.propTypes = {
   errors: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
   createEditExperience: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
+  profile: state.profile
 });
 
 export default connect(
