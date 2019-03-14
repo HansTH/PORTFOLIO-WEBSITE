@@ -21,6 +21,9 @@ const DashboardActions = () => {
           className='btn btn-light btn-hover mx-1'>
           <i className='fas fa-magic text-info mr-1' /> Add Experience
         </Link>
+        <Link to='/add-edit-education' className='btn btn-light btn-hover mx-1'>
+          <i className='fas fa-magic text-info mr-1' /> Add Education
+        </Link>
       </div>
     </div>
   );
