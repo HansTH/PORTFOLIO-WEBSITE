@@ -76,7 +76,39 @@ const ProfileSchema = new Schema({
   contactEmail: {
     type: String,
     required: true
-  }
+  },
+
+  experience: [
+    {
+      companyName: {
+        type: String,
+        required: true
+      },
+      companyCity: {
+        type: String,
+        require: true
+      },
+      companyStart: {
+        type: Date,
+        required: true
+      },
+      companyEnd: {
+        type: Date
+      },
+      companyCurrent: {
+        type: Boolean,
+        default: false
+      },
+      companyJobTitle: {
+        type: String,
+        required: true
+      },
+      companyJobInfo: {
+        type: String,
+        required: true
+      }
+    }
+  ]
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

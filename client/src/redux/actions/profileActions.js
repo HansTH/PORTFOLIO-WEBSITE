@@ -235,3 +235,36 @@ export const addEditPortfolio = (portfolioData, history) => dispatch => {
       })
     );
 };
+
+// Add or Edit experience
+export const createEditExperience = (experienceData, history) => dispatch => {
+  axios
+    .post('/api/profile/experience/', experienceData)
+    .then(res => history.push('./dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// EXPERIENCE
+//
+// Delete experience
+export const deleteExperience = id => dispatch => {
+  axios
+    .delete(`/api/profile/experience/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};

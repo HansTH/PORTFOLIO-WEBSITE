@@ -10,6 +10,7 @@ const User = require('../models/User');
 const validateProfileInput = require('../validation/profile');
 const validateSkillInput = require('../validation/skill');
 const validatePortfolioInput = require('../validation/portfolio');
+const validateExperienceInput = require('../validation/experience');
 
 // @route   GET api/profile/user
 // @desc    Get current user profile
@@ -311,7 +312,7 @@ router.post(
   }
 );
 
-// @route   DELETE api/profile/portfolio/:exp_id
+// @route   DELETE api/profile/portfolio/:portfolio_id
 // @desc    Delete porfolio from profile
 // @access  Private
 router.delete(
@@ -322,11 +323,62 @@ router.delete(
       .then(profile => {
         const deleteIndex = profile.portfolio
           .map(item => item.id)
-          .indexOf(req.params.exp_id);
+          .indexOf(req.params.portfolio_id);
 
         // splice out of portfolio array
         profile.portfolio.splice(deleteIndex, 1);
         // save new portfolio array
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
+// EXPERIENCE
+//
+// @route   POST api/profile/experience
+// @desc    Add experience to profile
+// @access  Private
+router.post(
+  '/experience',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    // check validation
+    const { errors, isValid } = validateExperienceInput(req.body);
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const newExperience = {
+        companyName: req.body.companyName,
+        companyCity: req.body.companyCity,
+        companyStart: req.body.companyStart,
+        companyEnd: req.body.companyEnd,
+        companyCurrent: req.body.companyCurrent,
+        companyJobTitle: req.body.companyJobTitle,
+        companyJobInfo: req.body.companyJobInfo
+      };
+      profile.experience.unshift(newExperience);
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
+// DELETE
+// @route   DELETE api/profile/experience/:exp_id
+// @desc    Delete experience by id
+// @access  Private
+router.delete(
+  '/experience/:exp_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const deleteIndex = profile.experience
+          .map(item => item.id)
+          .indexOf(req.params.exp_id);
+
+        profile.experience.splice(deleteIndex, 1);
         profile.save().then(profile => res.json(profile));
       })
       .catch(err => res.status(404).json(err));

@@ -387,6 +387,14 @@ ul {
   border-radius: 10px;
 }
 
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  height: 2rem;
+  border-bottom: 1px solid #bec2c9;
+}
+
 @media only screen and (max-width: 767px) {
   html {
     font-size: 13px;

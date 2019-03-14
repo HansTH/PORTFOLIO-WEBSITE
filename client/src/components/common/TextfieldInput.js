@@ -7,7 +7,8 @@ const TextfieldInput = ({
   onChange,
   errors,
   info,
-  type
+  type,
+  disabled
 }) => {
   return (
     <div className='form-control'>
@@ -23,6 +24,8 @@ const TextfieldInput = ({
         value={value}
         onChange={onChange}
         rows='10'
+        disabled={disabled}
+        style={{ backgroundColor: disabled === 'disabled' ? '#bec2c9' : '' }}
       />
       {info && (
         <div className='form-info'>
