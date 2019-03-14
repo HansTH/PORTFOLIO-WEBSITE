@@ -25,7 +25,6 @@ import AddPortfolio from './components/portfolio/AddPortfolio';
 import EditSkill from './components/skills/EditSkill';
 import AddEditPortfolio from './components/portfolio/AddEditPortfolio';
 import CreateEditExperience from './components/experience/CreateEditExperience';
-import CreateEditEducation from './components/education/CreateEditEducation';
 
 import './styles.css';
 
@@ -103,13 +102,6 @@ class App extends Component {
                   exact
                   path='/add-edit-experience'
                   component={CreateEditExperience}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/add-edit-education'
-                  component={CreateEditEducation}
                 />
               </Switch>
             </div>

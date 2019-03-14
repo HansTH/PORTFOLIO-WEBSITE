@@ -108,32 +108,6 @@ const ProfileSchema = new Schema({
         required: true
       }
     }
-  ],
-  education: [
-    {
-      eduSchool: {
-        type: String,
-        required: true
-      },
-      eduTitle: {
-        type: String,
-        required: true
-      },
-      eduStart: {
-        type: Date,
-        required: true
-      },
-      eduEnd: {
-        type: Date
-      },
-      eduCurrent: {
-        type: Boolean,
-        default: false
-      },
-      eduInfo: {
-        type: String
-      }
-    }
   ]
 });
 
