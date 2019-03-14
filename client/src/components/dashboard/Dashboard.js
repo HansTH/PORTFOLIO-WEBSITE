@@ -10,6 +10,7 @@ import Loading from '../common/Loading';
 import DashboardAction from './DashboardActions';
 import Skills from './Skills';
 import Portfolio from './Portfolio';
+import Experience from './Experience';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -34,6 +35,7 @@ class Dashboard extends Component {
               <DashboardAction />
               <Portfolio portfolio={profile.portfolio} />
               <Skills skill={profile.skill} />
+              <Experience experience={profile.experience} />
             </div>
             <div className='text-center my-4'>
               <button

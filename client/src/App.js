@@ -24,6 +24,7 @@ import AddSkill from './components/skills/AddSkill';
 import AddPortfolio from './components/portfolio/AddPortfolio';
 import EditSkill from './components/skills/EditSkill';
 import AddEditPortfolio from './components/portfolio/AddEditPortfolio';
+import CreateEditExperience from './components/experience/CreateEditExperience';
 
 import './styles.css';
 
@@ -94,6 +95,13 @@ class App extends Component {
                   exact
                   path='/add-edit-portfolio'
                   component={AddEditPortfolio}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path='/add-experience'
+                  component={CreateEditExperience}
                 />
               </Switch>
             </div>
