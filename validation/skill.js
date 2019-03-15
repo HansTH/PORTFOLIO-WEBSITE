@@ -17,7 +17,7 @@ module.exports = function validateSkillInput(data) {
   }
 
   if (validator.isEmpty(data.icon)) {
-    errors.icon = 'Icon field is required.';
+    errors.icon = 'URL location field is required.';
   }
 
   return {

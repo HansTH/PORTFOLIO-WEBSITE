@@ -17,7 +17,6 @@ class EditProfile extends Component {
     fullname: '',
     jobtitle: '',
     bio: '',
-    skills: '',
     github: '',
     contactEmail: '',
     contactNumber: '',
@@ -36,9 +35,6 @@ class EditProfile extends Component {
 
     if (nextProps.profile.profile) {
       const profile = nextProps.profile.profile;
-      console.log(profile);
-      // set skills back to a string
-      const skillsString = profile.skills.join(',');
 
       // check if profile field exist
       profile.fullname = !isEmpty(profile.fullname) ? profile.fullname : '';
@@ -60,7 +56,6 @@ class EditProfile extends Component {
         fullname: profile.fullname,
         jobtitle: profile.jobtitle,
         bio: profile.bio,
-        skills: skillsString,
         github: profile.github,
         contactNumber: profile.contactNumber,
         contactEmail: profile.contactEmail,
@@ -80,7 +75,6 @@ class EditProfile extends Component {
       fullname: this.state.fullname,
       jobtitle: this.state.jobtitle,
       bio: this.state.bio,
-      skills: this.state.skills,
       github: this.state.github,
       contactTitle: this.state.contactTitle,
       contactNumber: this.state.contactNumber,
@@ -124,14 +118,6 @@ class EditProfile extends Component {
                 onChange={this.handleOnChange}
                 errors={errors.jobtitle}
                 // info='Please use cmma separated values (eg. HTML, CSS, PHP).'
-              />
-              <TextfieldInput
-                placeholder='*Your developer skills'
-                name='skills'
-                value={this.state.skills}
-                onChange={this.handleOnChange}
-                errors={errors.skills}
-                info='Please use comma separated values (eg. HTML, CSS, PHP).'
               />
               <TextfieldInput
                 placeholder='GitHub account'

@@ -5,7 +5,11 @@ const AboutMe = ({ bio }) => {
   return (
     <div id='about' className='container my-4'>
       <SectionTitle title='Over mij' subtitle='wie ben ik' />
-      <h1 className='text-center text-color text-regular display-1'>{bio}</h1>
+      {bio ? (
+        <h1 className='text-center text-color text-regular display-1'>{bio}</h1>
+      ) : (
+        <p className='text-color text-center display-1'>Tell us a about you.</p>
+      )}
     </div>
   );
 };

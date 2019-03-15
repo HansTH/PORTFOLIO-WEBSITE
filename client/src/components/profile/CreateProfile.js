@@ -13,7 +13,6 @@ class CreateProfile extends Component {
     fullname: '',
     jobtitle: '',
     bio: '',
-    skills: '',
     github: '',
     contactNumber: '',
     contactEmail: '',
@@ -38,13 +37,11 @@ class CreateProfile extends Component {
       fullname: this.state.fullname,
       jobtitle: this.state.jobtitle,
       bio: this.state.bio,
-      skills: this.state.skills,
       github: this.state.github,
       contactEmail: this.state.contactEmail,
       contactNumber: this.state.contactNumber,
       contactTitle: this.state.contactTitle
     };
-    console.log(profileData);
     this.props.createProfile(profileData, this.props.history);
   };
 
@@ -83,14 +80,6 @@ class CreateProfile extends Component {
                 onChange={this.handleOnChange}
                 errors={errors.jobtitle}
                 // info='Please use cmma separated values (eg. HTML, CSS, PHP).'
-              />
-              <TextfieldInput
-                placeholder='*Your developer skills'
-                name='skills'
-                value={this.state.skills}
-                onChange={this.handleOnChange}
-                errors={errors.skills}
-                info='Please use comma separated values (eg. HTML, CSS, PHP).'
               />
               <TextfieldInput
                 placeholder='GitHub account'

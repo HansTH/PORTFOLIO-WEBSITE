@@ -99,11 +99,6 @@ router.post(
     if (req.body.contactNumber)
       profileFields.contactNumber = req.body.contactNumber;
 
-    // skills, split into an array
-    if (typeof req.body.skills !== 'undefined') {
-      profileFields.skills = req.body.skills.split(',');
-    }
-
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
         // update user

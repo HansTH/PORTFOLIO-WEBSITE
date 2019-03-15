@@ -16,23 +16,23 @@ const validateExperienceInput = data => {
 
   // validate is empty
   if (Validator.isEmpty(data.companyName)) {
-    errors.companyName = 'Email field is required';
+    errors.companyName = 'Name field is required';
   }
 
   if (Validator.isEmpty(data.companyCity)) {
-    errors.companyCity = 'Password field is required';
+    errors.companyCity = 'City field is required';
   }
 
   if (Validator.isEmpty(data.companyStart)) {
-    errors.companyStart = 'Password field is required';
+    errors.companyStart = 'From date field is required';
   }
 
   if (Validator.isEmpty(data.companyJobTitle)) {
-    errors.companyJobTitle = 'Password field is required';
+    errors.companyJobTitle = 'Job title field is required';
   }
 
   if (Validator.isEmpty(data.companyJobInfo)) {
-    errors.companyJobInfo = 'Password field is required';
+    errors.companyJobInfo = 'Description field is required';
   }
 
   return {

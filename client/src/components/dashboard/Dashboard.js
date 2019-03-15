@@ -58,7 +58,7 @@ class Dashboard extends Component {
               You have not yet setup a profile, please add some info
             </p>
             <div className='my-2'>
-              <Link to='/create-profile' className='btn-light btn-hover'>
+              <Link to='/create-profile' className='btn-light btn btn-hover'>
                 Create Profile
               </Link>
             </div>

@@ -28,7 +28,7 @@ class Showcase extends Component {
       showcaseContent = <Loading />;
     } else {
       showcaseContent = null;
-      if (Object.keys(profile).length > 0) {
+      if (profile.length > 0) {
         showcaseContent = profile.map(item => (
           <div key={item._id}>
             <AboutMe bio={item.bio} />

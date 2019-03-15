@@ -82,6 +82,11 @@ class Education extends Component {
   }
 }
 
+Education.propTypes = {
+  deleteEducation: PropTypes.func.isRequired,
+  getEducationItem: PropTypes.func.isRequired
+};
+
 export default connect(
   null,
   { deleteEducation, getEducationItem }

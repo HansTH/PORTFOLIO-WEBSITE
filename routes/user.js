@@ -32,9 +32,9 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
-      errors.email = 'Email already exist';
+  User.find({ user: req.body.user }).then(user => {
+    if (user.length > 0) {
+      errors.user = 'User already register.';
       return res.status(400).json(errors);
     } else {
       // create a avatar image
@@ -45,7 +45,7 @@ router.post('/register', (req, res) => {
       });
 
       const newUser = new User({
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         avatar: avatar
@@ -89,7 +89,11 @@ router.post('/login', (req, res) => {
     // check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id: user.id, name: user.name, avatar: user.avatar };
+        const payload = {
+          id: user.id,
+          username: user.username,
+          avatar: user.avatar
+        };
 
         // sign token
         jwt.sign(
@@ -120,7 +124,7 @@ router.get(
   (req, res) => {
     res.json({
       id: req.user.id,
-      name: req.user.name,
+      username: req.user.username,
       email: req.user.email
     });
   }

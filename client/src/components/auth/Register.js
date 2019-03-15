@@ -11,7 +11,7 @@ import TextfieldInput from '../common/TextfieldInput';
 
 class Register extends Component {
   state = {
-    name: '',
+    username: '',
     email: '',
     password: '',
     password2: '',
@@ -39,9 +39,9 @@ class Register extends Component {
   handleOnSubmit = e => {
     e.preventDefault();
 
-    const { name, email, password, password2 } = this.state;
+    const { username, email, password, password2 } = this.state;
     const newUser = {
-      name,
+      username,
       email,
       password,
       password2
@@ -51,14 +51,20 @@ class Register extends Component {
   };
 
   render() {
-    const { name, email, password, password2, errors } = this.state;
+    const { username, email, password, password2, errors } = this.state;
     return (
       <div id='register' className='my-4'>
         <div className='container'>
           <h1 className='text-center text-primary display-4'>Sign In</h1>
-          <p className='lead text-center text-color display-1'>
-            Create your account
-          </p>
+          {errors.user ? (
+            <p className='lead text-center text-primary display-1'>
+              {errors.user}
+            </p>
+          ) : (
+            <p className='lead text-center text-color display-1'>
+              Create your account
+            </p>
+          )}
           <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>
               <div className='my-2'>
@@ -70,11 +76,11 @@ class Register extends Component {
               <span className='text-color'>* is required</span>
               <TextfieldInput
                 type='text'
-                placeholder='* Name'
-                name='name'
-                value={name}
+                placeholder='* Username'
+                name='username'
+                value={username}
                 onChange={this.handleOnChange}
-                errors={errors.name}
+                errors={errors.username}
               />
 
               <TextfieldInput

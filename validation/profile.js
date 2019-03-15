@@ -6,7 +6,6 @@ module.exports = function validateProfileInput(data) {
 
   data.fullname = !isEmpty(data.fullname) ? data.fullname : '';
   data.jobtitle = !isEmpty(data.jobtitle) ? data.jobtitle : '';
-  data.skills = !isEmpty(data.skills) ? data.skills : '';
   data.contactNumber = !isEmpty(data.contactNumber) ? data.contactNumber : '';
   data.contactEmail = !isEmpty(data.contactEmail) ? data.contactEmail : '';
   data.contactTitle = !isEmpty(data.contactTitle) ? data.contactTitle : '';
@@ -21,10 +20,6 @@ module.exports = function validateProfileInput(data) {
     errors.jobtitle = 'Job title field is required.';
   }
 
-  // skills
-  if (validator.isEmpty(data.skills)) {
-    errors.skills = 'Skills field is required.';
-  }
   // contactNumber
   if (validator.isEmpty(data.contactNumber)) {
     errors.contactNumber = 'Mobile field is required.';
