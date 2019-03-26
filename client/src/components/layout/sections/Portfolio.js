@@ -19,6 +19,13 @@ const Portfolio = ({ portfolio }) => {
           <p className='text-color display-1 my-0'>
             {item.appSkills.join(' • ')}
           </p>
+          {item.appStore && (
+            <div className='my-2'>
+              <a className='btn btn-light btn-hover' href={item.appStore}>
+                 App store
+              </a>
+            </div>
+          )}
         </div>
       </div>
     ) : (
@@ -34,6 +41,13 @@ const Portfolio = ({ portfolio }) => {
           <p className='text-color display-1 my-0'>
             {item.appSkills.join(' • ')}
           </p>
+          {item.appStore && (
+            <div className='my-1'>
+              <button className='btn btn-light btn-hover' href={item.appStore}>
+                 App store
+              </button>
+            </div>
+          )}
         </div>
         <div className='portfolio-image'>
           <img src={item.appScreenshot} alt={item.appTitle} />

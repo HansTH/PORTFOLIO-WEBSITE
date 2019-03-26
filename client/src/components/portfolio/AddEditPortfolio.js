@@ -16,6 +16,8 @@ class AddEditPortfolio extends Component {
     appCategory: '',
     appScreenshot: '',
     appSkills: '',
+    appIcon: '',
+    appStore: '',
     errors: {}
   };
 
@@ -42,6 +44,12 @@ class AddEditPortfolio extends Component {
       portfolioItem.appScreenshot = !isEmpty(portfolioItem.appScreenshot)
         ? portfolioItem.appScreenshot
         : '';
+      portfolioItem.appIcon = !isEmpty(portfolioItem.appIcon)
+        ? portfolioItem.appIcon
+        : '';
+      portfolioItem.appStore = !isEmpty(portfolioItem.appStore)
+        ? portfolioItem.appStore
+        : '';
 
       this.setState({
         id: portfolioItem.id,
@@ -49,7 +57,9 @@ class AddEditPortfolio extends Component {
         appInfo: portfolioItem.appInfo,
         appCategory: portfolioItem.appCategory,
         appScreenshot: portfolioItem.appScreenshot,
-        appSkills: portfolioItem.appSkills
+        appSkills: portfolioItem.appSkills,
+        appIcon: portfolioItem.appIcon,
+        appStore: portfolioItem.appStore
       });
     }
   }
@@ -67,7 +77,9 @@ class AddEditPortfolio extends Component {
       appInfo: this.state.appInfo,
       appCategory: this.state.appCategory,
       appScreenshot: this.state.appScreenshot,
-      appSkills: this.state.appSkills
+      appSkills: this.state.appSkills,
+      appIcon: this.state.appIcon,
+      appStore: this.state.appStore
     };
 
     this.props.addEditPortfolio(portfolioData, this.props.history);
@@ -121,6 +133,20 @@ class AddEditPortfolio extends Component {
                 name='appSkills'
                 value={this.state.appSkills}
                 errors={errors.appSkills}
+                onChange={this.handleOnChange}
+              />
+              <TextfieldInput
+                placeholder='*App icon image'
+                name='appIcon'
+                value={this.state.appIcon}
+                errors={errors.appIcon}
+                onChange={this.handleOnChange}
+              />
+              <TextfieldInput
+                placeholder='App store URL'
+                name='appStore'
+                value={this.state.appStore}
+                errors={errors.appStore}
                 onChange={this.handleOnChange}
               />
               <TextareaInput

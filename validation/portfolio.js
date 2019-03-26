@@ -11,6 +11,8 @@ module.exports = function validatePortfolioInput(data) {
   data.appDescription = !isEmpty(data.appDescription)
     ? data.appDescription
     : '';
+  data.appIcon = !isEmpty(data.appIcon) ? data.appIcon : '';
+  data.appStore = !isEmpty(data.appStore) ? data.appStore : '';
 
   if (validator.isEmpty(data.appTitle)) {
     errors.appTitle = 'Title field is required.';
@@ -29,6 +31,9 @@ module.exports = function validatePortfolioInput(data) {
   }
   if (validator.isEmpty(data.appSkills)) {
     errors.appSkills = 'Skills field is required.';
+  }
+  if (validator.isEmpty(data.appIcon)) {
+    errors.appIcon = 'Skills field is required.';
   }
 
   return {

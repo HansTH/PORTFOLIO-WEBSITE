@@ -62,6 +62,13 @@ const ProfileSchema = new Schema({
       appSkills: {
         type: [String],
         required: true
+      },
+      appIcon: {
+        type: String,
+        required: true
+      },
+      appStore: {
+        type: String
       }
     }
   ],
