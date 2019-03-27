@@ -38,6 +38,10 @@ const ProfileSchema = new Schema({
       icon: {
         type: String,
         required: true
+      },
+      level: {
+        type: String,
+        required: true
       }
     }
   ],

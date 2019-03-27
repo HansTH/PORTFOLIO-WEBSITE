@@ -159,6 +159,7 @@ router.post(
     const skillFields = {};
     if (req.body.title) skillFields.title = req.body.title;
     if (req.body.icon) skillFields.icon = req.body.icon;
+    if (req.body.level) skillFields.level = req.body.level;
 
     // skills, split into an array
     if (typeof req.body.skills !== 'undefined') {
