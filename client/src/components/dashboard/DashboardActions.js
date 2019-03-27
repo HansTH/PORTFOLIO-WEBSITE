@@ -11,7 +11,7 @@ const DashboardActions = () => {
         <Link to='/add-edit-portfolio' className='btn btn-light btn-hover mx-1'>
           <i className='fas fa-laptop-code text-info mr-1' /> Add Portfolio
         </Link>
-        <Link to='/add-skill' className='btn btn-light btn-hover mx-1'>
+        <Link to='/add-edit-skill' className='btn btn-light btn-hover mx-1'>
           <i className='fas fa-magic text-info mr-1' /> Add Skill
         </Link>
       </div>

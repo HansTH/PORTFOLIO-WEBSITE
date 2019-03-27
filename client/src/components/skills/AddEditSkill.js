@@ -8,12 +8,12 @@ import isEmpty from '../../utils/isEmpty';
 // Components
 import TextfieldInput from '../common/TextfieldInput';
 
-class EditSkill extends Component {
+class AddEditSkill extends Component {
   state = {
-    id: '',
     title: '',
     skills: '',
     icon: '',
+    level: '',
     errors: {}
   };
 
@@ -30,12 +30,14 @@ class EditSkill extends Component {
       skill.title = !isEmpty(skill.title) ? skill.title : '';
       skill.icon = !isEmpty(skill.icon) ? skill.icon : '';
       skill.skills = skillsString;
+      skill.level = !isEmpty(skill.level) ? skill.level : '';
 
       this.setState({
         id: skill.id,
         title: skill.title,
         icon: skill.icon,
-        skills: skill.skills
+        skills: skill.skills,
+        level: skill.level
       });
     }
   }
@@ -51,7 +53,8 @@ class EditSkill extends Component {
       id: this.state.id,
       title: this.state.title,
       skills: this.state.skills,
-      icon: this.state.icon
+      icon: this.state.icon,
+      level: this.state.level
     };
 
     this.props.addEditSkill(skillData, this.props.history);
@@ -59,15 +62,14 @@ class EditSkill extends Component {
 
   render() {
     const { errors } = this.state;
-
     return (
       <div id='add-skill' className=' my-4'>
         <div className='container'>
           <h1 className='text-center text-primary display-4'>
-            Edit your skill
+            Add your skills
           </h1>
           <p className='lead text-center text-color display-1'>
-            Edit your developer or programming skill
+            Add any developer or programming skills
           </p>
           <form onSubmit={this.handleOnSubmit} noValidate>
             <div className='form-group'>
@@ -92,6 +94,15 @@ class EditSkill extends Component {
                 value={this.state.skills}
                 errors={errors.skills}
                 onChange={this.handleOnChange}
+                info='Please use comma separated values (eg. HTML, CSS, PHP).'
+              />
+              <TextfieldInput
+                placeholder='*Skill level'
+                name='level'
+                value={this.state.level}
+                errors={errors.level}
+                onChange={this.handleOnChange}
+                info='Give your skill a number between 0 and 10'
               />
               <TextfieldInput
                 placeholder='*Icon URL'
@@ -111,7 +122,7 @@ class EditSkill extends Component {
   }
 }
 
-EditSkill.propTypes = {
+AddEditSkill.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   addEditSkill: PropTypes.func.isRequired
@@ -125,4 +136,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addEditSkill }
-)(withRouter(EditSkill));
+)(withRouter(AddEditSkill));

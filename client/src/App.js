@@ -20,9 +20,9 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 import Showcase from './components/layout/Showcase';
-import AddSkill from './components/skills/AddSkill';
+import AddEditSkill from './components/skills/AddEditSkill';
 import AddPortfolio from './components/portfolio/AddPortfolio';
-import EditSkill from './components/skills/EditSkill';
+
 import AddEditPortfolio from './components/portfolio/AddEditPortfolio';
 import CreateEditExperience from './components/experience/CreateEditExperience';
 import CreateEditEducation from './components/education/CreateEditEducation';
@@ -79,10 +79,11 @@ class App extends Component {
                 />
               </Switch>
               <Switch>
-                <PrivateRoute exact path='/add-skill' component={AddSkill} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path='/edit-skill' component={EditSkill} />
+                <PrivateRoute
+                  exact
+                  path='/add-edit-skill'
+                  component={AddEditSkill}
+                />
               </Switch>
               <Switch>
                 <PrivateRoute

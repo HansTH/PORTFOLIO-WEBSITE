@@ -35,7 +35,7 @@ class Skill extends Component {
             ))}
           </ul>
           <Link
-            to={'/edit-skill'}
+            to={'/add-edit-skill'}
             className='btn-light btn-small my-1'
             onClick={() => this.handleEditSkill(skill._id)}>
             Edit
