@@ -92,14 +92,15 @@ export const clearProfile = () => {
 };
 
 // Delete account & profile
-export const deleteAccount = () => dispatch => {
+export const deleteAccount = history => dispatch => {
   if (window.confirm('Are you sure to delete your account!')) {
     axios
       .delete('/api/profile')
-      .then(res =>
+      .then(
+        res => history.push('/'),
         dispatch({
           type: SET_CURRENT_USER,
-          payload: {}
+          payload: null
         })
       )
       .catch(err =>

@@ -4,8 +4,11 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   getUserProfile,
-  deleteAccount
+  deleteAccount,
+  clearProfile
 } from '../../redux/actions/profileActions';
+import { logoutUser } from '../../redux/actions/authActions';
+
 import Loading from '../common/Loading';
 import DashboardAction from './DashboardActions';
 import Skills from './Skills';
@@ -18,10 +21,17 @@ class Dashboard extends Component {
     this.props.getUserProfile();
   }
 
+  handleDeleteAccount = e => {
+    e.preventDefault();
+    this.props.deleteAccount();
+    this.props.clearProfile();
+    this.props.logoutUser(this.props.history);
+  };
+
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
-    const { deleteAccount } = this.props;
+
     let dashboardContent = {};
     if (profile === null || loading) {
       dashboardContent = <Loading />;
@@ -42,9 +52,7 @@ class Dashboard extends Component {
             <div className='text-center my-4'>
               <button
                 className='btn btn-primary'
-                onClick={() => {
-                  deleteAccount();
-                }}>
+                onClick={this.handleDeleteAccount}>
                 Delete my account
               </button>
             </div>
@@ -92,5 +100,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getUserProfile, deleteAccount }
+  { getUserProfile, deleteAccount, clearProfile, logoutUser }
 )(withRouter(Dashboard));
