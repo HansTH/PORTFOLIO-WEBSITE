@@ -14,7 +14,7 @@ class AddEditPortfolio extends Component {
     appTitle: '',
     appInfo: '',
     appCategory: '',
-    appScreenshot: '',
+    appScreenshots: '',
     appSkills: '',
     appIcon: '',
     appStore: '',
@@ -30,7 +30,10 @@ class AddEditPortfolio extends Component {
       const portfolioItem = nextProps.profile.item;
 
       const appSkillsString = portfolioItem.appSkills.join(',');
+      const appScreenshotsString = portfolioItem.appScreenshots.join(',');
       portfolioItem.appSkills = appSkillsString;
+      portfolioItem.appScreenshots = appScreenshotsString;
+
       portfolioItem.id = !isEmpty(portfolioItem._id) ? portfolioItem._id : '';
       portfolioItem.appTitle = !isEmpty(portfolioItem.appTitle)
         ? portfolioItem.appTitle
@@ -40,9 +43,6 @@ class AddEditPortfolio extends Component {
         : '';
       portfolioItem.appCategory = !isEmpty(portfolioItem.appCategory)
         ? portfolioItem.appCategory
-        : '';
-      portfolioItem.appScreenshot = !isEmpty(portfolioItem.appScreenshot)
-        ? portfolioItem.appScreenshot
         : '';
       portfolioItem.appIcon = !isEmpty(portfolioItem.appIcon)
         ? portfolioItem.appIcon
@@ -56,7 +56,7 @@ class AddEditPortfolio extends Component {
         appTitle: portfolioItem.appTitle,
         appInfo: portfolioItem.appInfo,
         appCategory: portfolioItem.appCategory,
-        appScreenshot: portfolioItem.appScreenshot,
+        appScreenshots: portfolioItem.appScreenshots,
         appSkills: portfolioItem.appSkills,
         appIcon: portfolioItem.appIcon,
         appStore: portfolioItem.appStore
@@ -76,7 +76,7 @@ class AddEditPortfolio extends Component {
       appTitle: this.state.appTitle,
       appInfo: this.state.appInfo,
       appCategory: this.state.appCategory,
-      appScreenshot: this.state.appScreenshot,
+      appScreenshots: this.state.appScreenshots,
       appSkills: this.state.appSkills,
       appIcon: this.state.appIcon,
       appStore: this.state.appStore
@@ -121,12 +121,13 @@ class AddEditPortfolio extends Component {
                 onChange={this.handleOnChange}
                 info='What kind of app (eg. Web, iOS, Android).'
               />
-              <TextfieldInput
+              <TextareaInput
                 placeholder='*URL location'
-                name='appScreenshot'
-                value={this.state.appScreenshot}
-                errors={errors.appScreenshot}
+                name='appScreenshots'
+                value={this.state.appScreenshots}
+                errors={errors.appScreenshots}
                 onChange={this.handleOnChange}
+                info='Please use comma separated values (https://, https://, ...).'
               />
               <TextfieldInput
                 placeholder='*Skills'

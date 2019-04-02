@@ -176,10 +176,10 @@ export const getSkill = id => dispatch => {
 
 // PORTFOLIO
 //
-// Add portfolio
-export const addPortfolio = (portfolioData, history) => dispatch => {
+// Add or Edit Porfolio
+export const addEditPortfolio = (portfolioData, history) => dispatch => {
   axios
-    .post('/api/profile/portfolio', portfolioData)
+    .post('/api/profile/portfolio/', portfolioData)
     .then(res => history.push('./dashboard'))
     .catch(err =>
       dispatch({
@@ -188,6 +188,7 @@ export const addPortfolio = (portfolioData, history) => dispatch => {
       })
     );
 };
+
 // Delete portfolio
 export const deletePortfolio = id => dispatch => {
   axios
@@ -216,19 +217,6 @@ export const getportfolioItem = id => dispatch => {
         payload: res.data
       })
     )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
-
-// Add or Edit Porfolio
-export const addEditPortfolio = (portfolioData, history) => dispatch => {
-  axios
-    .post('/api/profile/portfolio/', portfolioData)
-    .then(res => history.push('./dashboard'))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

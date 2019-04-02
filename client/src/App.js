@@ -21,8 +21,6 @@ import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 import Showcase from './components/layout/Showcase';
 import AddEditSkill from './components/skills/AddEditSkill';
-import AddPortfolio from './components/portfolio/AddPortfolio';
-
 import AddEditPortfolio from './components/portfolio/AddEditPortfolio';
 import CreateEditExperience from './components/experience/CreateEditExperience';
 import CreateEditEducation from './components/education/CreateEditEducation';
@@ -83,13 +81,6 @@ class App extends Component {
                   exact
                   path='/add-edit-skill'
                   component={AddEditSkill}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/add-portfolio'
-                  component={AddPortfolio}
                 />
               </Switch>
               <Switch>

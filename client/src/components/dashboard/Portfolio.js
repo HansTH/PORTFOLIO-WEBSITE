@@ -24,7 +24,7 @@ class Portfolio extends Component {
       portfolio.map(item => (
         <div key={item._id} className='portfolio-item withBorder-1 my-1'>
           <div className='portfolio-image'>
-            <img src={item.appScreenshot} alt={item.appTitle} />
+            <img src={item.appScreenshots[0]} alt={item.appTitle} />
           </div>
           <div className='portfolio-content mx-1'>
             <h4 className='text-primary display-1'>{item.appTitle}</h4>

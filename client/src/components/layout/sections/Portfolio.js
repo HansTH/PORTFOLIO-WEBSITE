@@ -1,12 +1,16 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
+import { randomNumber } from '../../../utils/randomNumber';
 
 const Portfolio = ({ portfolio }) => {
   let portfolioContent = portfolio.map((item, index) =>
     index % 2 === 0 && window.innerWidth > 767 ? (
       <div key={item._id} className=' portfolio-item my-1'>
         <div className='portfolio-image'>
-          <img src={item.appScreenshot} alt={item.appTitle} />
+          <img
+            src={item.appScreenshots[randomNumber(item.appScreenshots.length)]}
+            alt={item.appTitle}
+          />
         </div>
         <div className='portfolio-content '>
           <h4 className='text-primary display-2'>{item.appTitle}</h4>
@@ -50,7 +54,7 @@ const Portfolio = ({ portfolio }) => {
           )}
         </div>
         <div className='portfolio-image'>
-          <img src={item.appScreenshot} alt={item.appTitle} />
+          <img src={item.appScreenshots} alt={item.appTitle} />
         </div>
       </div>
     )
