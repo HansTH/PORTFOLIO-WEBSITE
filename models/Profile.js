@@ -59,8 +59,8 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      appScreenshot: {
-        type: String,
+      appScreenshots: {
+        type: [String],
         required: true
       },
       appSkills: {

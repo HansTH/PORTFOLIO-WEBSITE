@@ -279,14 +279,16 @@ router.post(
     if (req.body.appInfo) portfolioFields.appInfo = req.body.appInfo;
     if (req.body.appCategory)
       portfolioFields.appCategory = req.body.appCategory;
-    if (req.body.appScreenshot)
-      portfolioFields.appScreenshot = req.body.appScreenshot;
     if (req.body.appIcon) portfolioFields.appIcon = req.body.appIcon;
     if (req.body.appStore) portfolioFields.appStore = req.body.appStore;
 
     // appSkills, split into an array
     if (typeof req.body.appSkills !== 'undefined') {
       portfolioFields.appSkills = req.body.appSkills.split(',');
+    }
+    // appScreenshots, split into an array
+    if (typeof req.body.appScreenshots !== 'undefined') {
+      portfolioFields.appScreenshots = req.body.appScreenshots.split(',');
     }
 
     Profile.findOne({ user: req.user.id })
