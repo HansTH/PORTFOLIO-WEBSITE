@@ -9,6 +9,7 @@ module.exports = function validateProfileInput(data) {
   data.contactNumber = !isEmpty(data.contactNumber) ? data.contactNumber : '';
   data.contactEmail = !isEmpty(data.contactEmail) ? data.contactEmail : '';
   data.contactTitle = !isEmpty(data.contactTitle) ? data.contactTitle : '';
+  data.website = !isEmpty(data.website) ? data.website : '';
 
   // full name
   if (validator.isEmpty(data.fullname)) {
@@ -31,6 +32,10 @@ module.exports = function validateProfileInput(data) {
   // contactTitle
   if (validator.isEmpty(data.contactTitle)) {
     errors.contactTitle = 'Title field is required.';
+  }
+  // contactTitle
+  if (validator.isEmpty(data.website)) {
+    errors.website = 'Website field is required.';
   }
 
   // website

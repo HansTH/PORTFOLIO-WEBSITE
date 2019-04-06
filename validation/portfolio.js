@@ -10,30 +10,33 @@ module.exports = function validatePortfolioInput(data) {
   data.appDescription = !isEmpty(data.appDescription)
     ? data.appDescription
     : '';
-
   data.appIcon = !isEmpty(data.appIcon) ? data.appIcon : '';
-  data.appStore = !isEmpty(data.appStore) ? data.appStore : '';
+  data.appYear = !isEmpty(data.appYear) ? data.appYear : '';
+  data.appStoreURL = !isEmpty(data.appStoreURL) ? data.appStoreURL : '';
 
   if (validator.isEmpty(data.appTitle)) {
-    errors.appTitle = 'Title field is required.';
+    errors.appTitle = 'App title field is required.';
   }
 
   if (validator.isEmpty(data.appInfo)) {
-    errors.appInfo = 'Info field is required.';
+    errors.appInfo = 'App info field is required.';
   }
 
   if (validator.isEmpty(data.appCategory)) {
-    errors.appCategory = 'Category field is required.';
+    errors.appCategory = 'App category field is required.';
   }
 
   if (validator.isEmpty(data.appScreenshots)) {
-    errors.appScreenshots = 'URL location field is required.';
+    errors.appScreenshots = 'Screenshots URL location field is required.';
   }
   if (validator.isEmpty(data.appSkills)) {
-    errors.appSkills = 'Skills field is required.';
+    errors.appSkills = 'App skills field is required.';
   }
   if (validator.isEmpty(data.appIcon)) {
-    errors.appIcon = 'Skills field is required.';
+    errors.appIcon = 'App icon field is required.';
+  }
+  if (validator.isEmpty(data.appYear)) {
+    errors.appYear = 'App year field is required.';
   }
 
   return {

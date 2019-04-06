@@ -21,6 +21,7 @@ class EditProfile extends Component {
     contactEmail: '',
     contactNumber: '',
     contactTitle: '',
+    website: '',
     errors: {}
   };
 
@@ -50,6 +51,7 @@ class EditProfile extends Component {
       profile.contactTitle = !isEmpty(profile.contactTitle)
         ? profile.contactTitle
         : '';
+      profile.website = !isEmpty(profile.website) ? profile.website : '';
 
       // Set component input fields
       this.setState({
@@ -59,7 +61,8 @@ class EditProfile extends Component {
         github: profile.github,
         contactNumber: profile.contactNumber,
         contactEmail: profile.contactEmail,
-        contactTitle: profile.contactTitle
+        contactTitle: profile.contactTitle,
+        website: profile.website
       });
     }
   }
@@ -78,7 +81,8 @@ class EditProfile extends Component {
       github: this.state.github,
       contactTitle: this.state.contactTitle,
       contactNumber: this.state.contactNumber,
-      contactEmail: this.state.contactEmail
+      contactEmail: this.state.contactEmail,
+      website: this.state.website
     };
     this.props.createProfile(profileData, this.props.history);
   };
@@ -126,6 +130,14 @@ class EditProfile extends Component {
                 onChange={this.handleOnChange}
                 errors={errors.github}
                 info='If you want to show your latest repos from GitHub, include your github username'
+              />
+              <TextfieldInput
+                placeholder='Your website'
+                name='website'
+                value={this.state.website}
+                onChange={this.handleOnChange}
+                errors={errors.website}
+                info='Your website url'
               />
               <TextfieldInput
                 placeholder='Your mobile number'

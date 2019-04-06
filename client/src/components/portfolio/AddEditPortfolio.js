@@ -17,7 +17,8 @@ class AddEditPortfolio extends Component {
     appScreenshots: '',
     appSkills: '',
     appIcon: '',
-    appStore: '',
+    appStoreURL: '',
+    appYear: '',
     errors: {}
   };
 
@@ -47,8 +48,11 @@ class AddEditPortfolio extends Component {
       portfolioItem.appIcon = !isEmpty(portfolioItem.appIcon)
         ? portfolioItem.appIcon
         : '';
-      portfolioItem.appStore = !isEmpty(portfolioItem.appStore)
-        ? portfolioItem.appStore
+      portfolioItem.appStoreURL = !isEmpty(portfolioItem.appStoreURL)
+        ? portfolioItem.appStoreURL
+        : '';
+      portfolioItem.appYear = !isEmpty(portfolioItem.appYear)
+        ? portfolioItem.appYear
         : '';
 
       this.setState({
@@ -59,7 +63,8 @@ class AddEditPortfolio extends Component {
         appScreenshots: portfolioItem.appScreenshots,
         appSkills: portfolioItem.appSkills,
         appIcon: portfolioItem.appIcon,
-        appStore: portfolioItem.appStore
+        appStoreURL: portfolioItem.appStoreURL,
+        appYear: portfolioItem.appYear
       });
     }
   }
@@ -79,7 +84,8 @@ class AddEditPortfolio extends Component {
       appScreenshots: this.state.appScreenshots,
       appSkills: this.state.appSkills,
       appIcon: this.state.appIcon,
-      appStore: this.state.appStore
+      appStoreURL: this.state.appStoreURL,
+      appYear: this.state.appYear
     };
 
     this.props.addEditPortfolio(portfolioData, this.props.history);
@@ -145,9 +151,16 @@ class AddEditPortfolio extends Component {
               />
               <TextfieldInput
                 placeholder='App store URL'
-                name='appStore'
-                value={this.state.appStore}
-                errors={errors.appStore}
+                name='appStoreURL'
+                value={this.state.appStoreURL}
+                errors={errors.appStoreURL}
+                onChange={this.handleOnChange}
+              />
+              <TextfieldInput
+                placeholder='App year'
+                name='appYear'
+                value={this.state.appYear}
+                errors={errors.appYear}
                 onChange={this.handleOnChange}
               />
               <TextareaInput

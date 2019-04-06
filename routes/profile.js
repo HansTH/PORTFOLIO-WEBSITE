@@ -98,6 +98,7 @@ router.post(
       profileFields.contactEmail = req.body.contactEmail;
     if (req.body.contactNumber)
       profileFields.contactNumber = req.body.contactNumber;
+    if (req.body.website) profileFields.website = req.body.website;
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
@@ -280,7 +281,9 @@ router.post(
     if (req.body.appCategory)
       portfolioFields.appCategory = req.body.appCategory;
     if (req.body.appIcon) portfolioFields.appIcon = req.body.appIcon;
-    if (req.body.appStore) portfolioFields.appStore = req.body.appStore;
+    if (req.body.appStoreURL)
+      portfolioFields.appStoreURL = req.body.appStoreURL;
+    if (req.body.appYear) portfolioFields.appYear = req.body.appYear;
 
     // appSkills, split into an array
     if (typeof req.body.appSkills !== 'undefined') {
@@ -293,6 +296,7 @@ router.post(
 
     Profile.findOne({ user: req.user.id })
       .then(profile => {
+        portfolioFields.website = profile.website;
         if (profile) {
           // get index of the portfolio in the array
           const portfolioIndex = profile.portfolio

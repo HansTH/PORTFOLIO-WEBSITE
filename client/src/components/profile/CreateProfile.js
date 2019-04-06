@@ -17,6 +17,7 @@ class CreateProfile extends Component {
     contactNumber: '',
     contactEmail: '',
     contactTitle: '',
+    website: '',
     errors: {}
   };
 
@@ -40,7 +41,8 @@ class CreateProfile extends Component {
       github: this.state.github,
       contactEmail: this.state.contactEmail,
       contactNumber: this.state.contactNumber,
-      contactTitle: this.state.contactTitle
+      contactTitle: this.state.contactTitle,
+      website: this.state.website
     };
     this.props.createProfile(profileData, this.props.history);
   };
@@ -88,6 +90,14 @@ class CreateProfile extends Component {
                 onChange={this.handleOnChange}
                 errors={errors.github}
                 info='If you want to show your latest repos from GitHub, include your github username'
+              />
+              <TextfieldInput
+                placeholder='Your website'
+                name='website'
+                value={this.state.website}
+                onChange={this.handleOnChange}
+                errors={errors.website}
+                info='Your website url'
               />
               <TextfieldInput
                 placeholder='Your mobile number'

@@ -21,6 +21,10 @@ const ProfileSchema = new Schema({
   github: {
     type: String
   },
+  website: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now
@@ -71,7 +75,14 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      appStore: {
+      appStoreURL: {
+        type: String
+      },
+      appYear: {
+        type: String,
+        required: true
+      },
+      website: {
         type: String
       }
     }
