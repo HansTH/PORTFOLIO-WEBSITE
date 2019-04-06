@@ -23,9 +23,9 @@ const Portfolio = ({ portfolio }) => {
           <p className='text-color display-1 my-0'>
             {item.appSkills.join(' • ')}
           </p>
-          {item.appStore && (
+          {item.appStoreURL && (
             <div className='my-2'>
-              <a className='btn btn-light btn-hover' href={item.appStore}>
+              <a className='btn btn-light btn-hover' href={item.appStoreURL}>
                  App store
               </a>
             </div>
@@ -45,16 +45,21 @@ const Portfolio = ({ portfolio }) => {
           <p className='text-color display-1 my-0'>
             {item.appSkills.join(' • ')}
           </p>
-          {item.appStore && (
+          {item.appStoreURL && (
             <div className='my-1'>
-              <button className='btn btn-light btn-hover' href={item.appStore}>
+              <button
+                className='btn btn-light btn-hover'
+                href={item.appStoreURL}>
                  App store
               </button>
             </div>
           )}
         </div>
         <div className='portfolio-image'>
-          <img src={item.appScreenshots} alt={item.appTitle} />
+          <img
+            src={item.appScreenshots[randomNumber(item.appScreenshots.length)]}
+            alt={item.appTitle}
+          />
         </div>
       </div>
     )
