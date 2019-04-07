@@ -173,7 +173,7 @@ class CreateEditExperience extends Component {
                 value={this.state.companyJobInfo}
                 onChange={this.handleOnChange}
                 errors={errors.companyJobInfo}
-                info='Tell us a little about the job'
+                info='Tell us a something about the job'
               />
               <div className='form-control my-2'>
                 <input type='submit' className='btn-light btn-hover' />

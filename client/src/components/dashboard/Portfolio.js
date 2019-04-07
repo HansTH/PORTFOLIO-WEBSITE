@@ -21,37 +21,39 @@ class Portfolio extends Component {
 
     const portfolioContent =
       portfolio &&
-      portfolio.map(item => (
-        <div key={item._id} className='portfolio-item withBorder-1 my-1'>
-          <div className='portfolio-image'>
-            <img src={item.appScreenshots[0]} alt={item.appTitle} />
-          </div>
-          <div className='portfolio-content mx-1'>
-            <h4 className='text-primary display-1'>{item.appTitle}</h4>
-            <p className='text-color my-0'>{item.appInfo}</p>
-            <div style={{ display: 'flex', alignItems: 'baseline' }}>
-              <h4 className='text-primary display-1'>Category </h4>
-              <p className='text-color'>&nbsp;- {item.appCategory}</p>
+      portfolio
+        .sort((a, b) => (a.appYear < b.appYear ? 1 : -1))
+        .map(item => (
+          <div key={item._id} className='portfolio-item withBorder-1 my-1'>
+            <div className='portfolio-image'>
+              <img src={item.appScreenshots[0]} alt={item.appTitle} />
             </div>
-            <h4 className='text-primary display-1 '>Skills</h4>
-            <p className='text-color my-0'>{item.appSkills.join(' • ')}</p>
-            <div className='my-1' style={{ display: 'flex' }}>
-              <Link
-                to={'/add-edit-portfolio'}
-                className='btn-light btn-small'
-                onClick={() => this.handleEditPortfolio(item._id)}>
-                Edit
-              </Link>
-              <button
-                type='button'
-                className='btn-primary btn-small mx-1'
-                onClick={() => this.handleDeletePortfolio(item._id)}>
-                Delete
-              </button>
+            <div className='portfolio-content mx-1'>
+              <h4 className='text-primary display-1'>{item.appTitle}</h4>
+              <p className='text-color my-0'>{item.appInfo}</p>
+              <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                <h4 className='text-primary display-1'>Category </h4>
+                <p className='text-color'>&nbsp;- {item.appCategory}</p>
+              </div>
+              <h4 className='text-primary display-1 '>Skills</h4>
+              <p className='text-color my-0'>{item.appSkills.join(' • ')}</p>
+              <div className='my-1' style={{ display: 'flex' }}>
+                <Link
+                  to={'/add-edit-portfolio'}
+                  className='btn-light btn-small'
+                  onClick={() => this.handleEditPortfolio(item._id)}>
+                  Edit
+                </Link>
+                <button
+                  type='button'
+                  className='btn-primary btn-small mx-1'
+                  onClick={() => this.handleDeletePortfolio(item._id)}>
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ));
+        ));
 
     return (
       <div className='my-4'>

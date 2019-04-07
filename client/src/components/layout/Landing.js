@@ -16,7 +16,6 @@ class Landing extends Component {
   }
 
   render() {
-    // const { user } = this.props.user;
     const { profile, loading } = this.props.profile;
 
     let landingContent = {};

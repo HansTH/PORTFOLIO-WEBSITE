@@ -122,7 +122,7 @@ class CreateEditEducation extends Component {
                 )}
                 onChange={this.handleOnChange}
                 errors={errors.eduStart}
-                info='When you start working'
+                info='The start of the Education'
               />
               <span className='my-1'>
                 <input
@@ -133,7 +133,7 @@ class CreateEditEducation extends Component {
                   value={this.state.eduCurrent}
                   checked={this.state.isDisabled}
                 />
-                <label className='text-color'> Current Job?</label>
+                <label className='text-color'> Current Education?</label>
               </span>
               <TextfieldInput
                 type='date'
@@ -156,7 +156,7 @@ class CreateEditEducation extends Component {
                 value={this.state.eduInfo}
                 onChange={this.handleOnChange}
                 errors={errors.eduInfo}
-                info='Tell us a little about the education'
+                info='Tell us something about the education'
               />
               <div className='form-control my-2'>
                 <input type='submit' className='btn-light btn-hover' />
