@@ -51,11 +51,9 @@ const Portfolio = ({ portfolio }) => {
             </p>
             {item.appStoreURL && (
               <div className='my-1'>
-                <button
-                  className='btn btn-light btn-hover'
-                  href={item.appStoreURL}>
+                <a className='btn btn-light btn-hover' href={item.appStoreURL}>
                    App store
-                </button>
+                </a>
               </div>
             )}
           </div>
