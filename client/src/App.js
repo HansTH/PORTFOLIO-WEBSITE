@@ -24,94 +24,96 @@ import AddEditSkill from './components/skills/AddEditSkill';
 import AddEditPortfolio from './components/portfolio/AddEditPortfolio';
 import CreateEditExperience from './components/experience/CreateEditExperience';
 import CreateEditEducation from './components/education/CreateEditEducation';
+import CV from './components/cv/CV';
 
 import './styles.css';
 
 // Check for token
 if (localStorage.jwtToken) {
-  // set auth token header auth
-  setAuthToken(localStorage.jwtToken);
-  // decode token and get user info and exp
-  const decoded = jwt_decode(localStorage.jwtToken);
-  // set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
+	// set auth token header auth
+	setAuthToken(localStorage.jwtToken);
+	// decode token and get user info and exp
+	const decoded = jwt_decode(localStorage.jwtToken);
+	// set user and isAuthenticated
+	store.dispatch(setCurrentUser(decoded));
 
-  // Check for expired token
-  const currentTime = Date.now() / 1000;
-  if (decoded.exp < currentTime) {
-    // logout user
-    store.dispatch(logoutUser());
-    store.dispatch(clearProfile());
+	// Check for expired token
+	const currentTime = Date.now() / 1000;
+	if (decoded.exp < currentTime) {
+		// logout user
+		store.dispatch(logoutUser());
+		store.dispatch(clearProfile());
 
-    // redirect to login
-    window.location.href = '/';
-  }
+		// redirect to login
+		window.location.href = '/';
+	}
 }
 
 class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className='app'>
-            <Navbar />
-            <Route exact path='/' component={Landing} />
-            <div className='container'>
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/login' component={Login} />
-              <Switch>
-                <PrivateRoute exact path='/dashboard' component={Dashboard} />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/create-profile'
-                  component={CreateProfile}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/edit-profile'
-                  component={EditProfile}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/add-edit-skill'
-                  component={AddEditSkill}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/add-edit-portfolio'
-                  component={AddEditPortfolio}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/add-edit-experience'
-                  component={CreateEditExperience}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path='/add-edit-education'
-                  component={CreateEditEducation}
-                />
-              </Switch>
-            </div>
-            <Route exact path='/' component={Showcase} />
-            <Footer />
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<Router>
+					<div className='app'>
+						<Navbar />
+						<Route exact path='/' component={Landing} />
+						<div className='container'>
+							<Route exact path='/register' component={Register} />
+							<Route exact path='/login' component={Login} />
+							<Route exact path='/cv' component={CV} />
+							<Switch>
+								<PrivateRoute exact path='/dashboard' component={Dashboard} />
+								{/* </Switch>
+              <Switch> */}
+								<PrivateRoute
+									exact
+									path='/create-profile'
+									component={CreateProfile}
+								/>
+								{/* </Switch>
+              <Switch> */}
+								<PrivateRoute
+									exact
+									path='/edit-profile'
+									component={EditProfile}
+								/>
+								{/* </Switch>
+              <Switch> */}
+								<PrivateRoute
+									exact
+									path='/add-edit-skill'
+									component={AddEditSkill}
+								/>
+								{/* </Switch>
+              <Switch> */}
+								<PrivateRoute
+									exact
+									path='/add-edit-portfolio'
+									component={AddEditPortfolio}
+								/>
+								{/* </Switch>
+              <Switch> */}
+								<PrivateRoute
+									exact
+									path='/add-edit-experience'
+									component={CreateEditExperience}
+								/>
+								{/* </Switch>
+              <Switch> */}
+								<PrivateRoute
+									exact
+									path='/add-edit-education'
+									component={CreateEditEducation}
+								/>
+							</Switch>
+						</div>
+						<Route exact path='/' component={Showcase} />
+						<Footer />
+					</div>
+				</Router>
+			</Provider>
+		);
+	}
 }
 
 export default App;
