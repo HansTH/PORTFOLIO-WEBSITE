@@ -79,12 +79,12 @@ class Navbar extends Component {
 						className='text-color btn-hover'
 						href='/#contact'
 					>
-						Hallo
+						Contact
 					</a>
 				</li>
 				<li>
-					<Link to={'/login'} className='text-color btn-hover'>
-						Login
+					<Link to={'/cv'} className='text-color btn-hover'>
+						CV
 					</Link>
 				</li>
 			</ul>
@@ -92,7 +92,7 @@ class Navbar extends Component {
 
 		return (
 			<nav id='nav' className='nav-container nav-container-sticky py-1'>
-				<Link to={'/dashboard'} className='logo text-primary display-1 mx-2'>
+				<Link to={'/'} className='logo text-primary display-1 mx-2'>
 					Hans ter Horst
 				</Link>
 				<div className='navbar mx-2'>

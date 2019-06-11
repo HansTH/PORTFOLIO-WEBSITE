@@ -433,6 +433,10 @@ td {
 .contacts a img {
 	width: 5rem;
 	margin: 0.5rem;
+	border-radius: 50%;
+}
+.contacts a img:hover {
+	background-color: #f32d29;
 }
 
 .profile-column {
