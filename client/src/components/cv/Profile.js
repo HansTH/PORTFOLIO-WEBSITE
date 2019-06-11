@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import profileImage from '../../img/profileImage.jpg';
 
-function Bio({ bio }) {
+export default function Bio({ bio }) {
 	return (
 		<div id='profile' className='my-1'>
 			<div className='profile-container'>
@@ -18,4 +19,6 @@ function Bio({ bio }) {
 	);
 }
 
-export default Bio;
+Bio.propTypes = {
+	bio: PropTypes.object.isRequired
+};

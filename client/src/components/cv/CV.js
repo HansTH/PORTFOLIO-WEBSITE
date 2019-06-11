@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfile } from '../../redux/actions/profileActions';
 import Loading from '../common/Loading';
@@ -60,6 +61,11 @@ class CV extends Component {
 		return <div>{cvContent}</div>;
 	}
 }
+
+CV.propTypes = {
+	profile: PropTypes.object.isRequired,
+	getProfile: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
 	profile: state.profile

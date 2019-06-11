@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
-function Education({ education }) {
+export default function Education({ education }) {
 	const educationContent = education
 		.sort((a, b) => (a.eduStart < b.eduStart ? 1 : -1))
 		.map(edu => (
@@ -32,4 +33,6 @@ function Education({ education }) {
 	);
 }
 
-export default Education;
+Education.propTypes = {
+	education: PropTypes.array.isRequired
+};

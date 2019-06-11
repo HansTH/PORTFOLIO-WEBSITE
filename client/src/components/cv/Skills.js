@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Skills({ skills }) {
+export default function Skills({ skills }) {
 	return (
 		<div>
 			<h1 className='display-2 text-primary'>Skills</h1>
@@ -20,4 +21,6 @@ function Skills({ skills }) {
 	);
 }
 
-export default Skills;
+Skills.propTypes = {
+	skills: PropTypes.array.isRequired
+};

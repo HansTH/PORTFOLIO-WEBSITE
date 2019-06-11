@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import emailIcon from '../../img/email-icon.png';
 import websiteIcon from '../../img/website-icon.png';
 import mobileIcon from '../../img/mobile-icon.png';
 import githubIcon from '../../img/github-icon.png';
 
-function Contact({ contact }) {
+export default function Contact({ contact }) {
 	return (
 		<div id='contact' className='my-1'>
 			<h1 className='display-2 text-primary'>Contact</h1>
@@ -39,4 +40,6 @@ function Contact({ contact }) {
 	);
 }
 
-export default Contact;
+Contact.propTypes = {
+	contact: PropTypes.object.isRequired
+};

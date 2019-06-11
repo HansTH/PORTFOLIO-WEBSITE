@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
-function Experience({ experience }) {
+export default function Experience({ experience }) {
 	const experienceContent = experience
 		.sort((a, b) => (a.companyStart < b.companyStart ? 1 : -1))
 		.map(exp => {
@@ -10,9 +11,8 @@ function Experience({ experience }) {
 				<div>
 					<div className='text-bold'>{exp.companyJobTitle}</div>
 					<div>
-						{/* {jobInfo} */}
-						{jobInfo.map(item => (
-							<li>{`${item}`}</li>
+						{jobInfo.map((item, index) => (
+							<li key={index}>{`${item}`}</li>
 						))}
 					</div>
 				</div>
@@ -50,4 +50,6 @@ function Experience({ experience }) {
 	);
 }
 
-export default Experience;
+Experience.propTypes = {
+	experience: PropTypes.array.isRequired
+};
