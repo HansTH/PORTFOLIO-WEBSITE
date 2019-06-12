@@ -14,7 +14,7 @@
 }
 html {
 	scroll-behavior: smooth;
-	font-size: 16px;
+	font-size: 15px;
 }
 body {
 	background-color: var(--bgColor);
@@ -43,11 +43,11 @@ li {
 /* UTILITY CLASSES */
 
 .text-primary {
-	color: #f32d29;
+	color: var(--titleColor);
 }
 
 .text-color {
-	color: #bec2c9;
+	color: var(--textColor);
 }
 
 .text-center {
@@ -74,8 +74,8 @@ li {
 }
 
 .bg-dark {
-	background-color: #f32d29;
-	color: #29354e;
+	background-color: var(--titleColor);
+	color: var(--bgColor);
 }
 
 .display-1 {
@@ -113,16 +113,16 @@ li {
 	outline: none;
 }
 .btn-primary {
-	color: #29354e;
-	background: #f32d29;
+	color: var(--bgColor);
+	background: var(--titleColor);
 }
 .btn-light {
-	color: #29354e;
-	background: #bec2c9;
+	color: var(--bgColor);
+	background: var(--textColor);
 }
 .btn-hover:hover {
-	background-color: #f32d29;
-	color: #29354e;
+	background-color: var(--titleColor);
+	color: var(--bgColor);
 	transform: scale(0.99);
 	transition: all 0.3s ease-in-out;
 }
@@ -242,8 +242,6 @@ li {
 
 .nav-container-sticky {
 	position: fixed;
-	/* opacity: 0.9; */
-	/* z-index: 5; */
 	border-bottom: 1px solid rgb(34, 43, 65);
 	top: -69px;
 }
@@ -305,7 +303,7 @@ li {
 	padding: 0.5rem;
 	width: 100%;
 	font-size: 1rem;
-	color: #29354e;
+	color: var(--bgColor);
 	font-weight: 400;
 	border-radius: 5px;
 	border: none;
@@ -325,7 +323,6 @@ li {
 .form-control input::placeholder {
 	font-size: 1rem;
 	font-weight: 400;
-	/* color: #d5d6d5 !important; */
 }
 
 .section-container {
@@ -334,7 +331,7 @@ li {
 	margin-top: 6rem;
 }
 .section-title {
-	border-right: 0.4rem solid #f32d29;
+	border-right: 0.4rem solid var(--titleColor);
 	display: flex;
 	width: 50%;
 	justify-content: flex-end;
@@ -397,7 +394,7 @@ li {
 }
 
 .withBorder-1 {
-	border: 1px solid #bec2c9;
+	border: 1px solid var(--textColor);
 	border-radius: 10px;
 }
 
@@ -406,7 +403,7 @@ td {
 	text-align: left;
 	padding: 0.5rem;
 	height: 2rem;
-	border-bottom: 1px solid #bec2c9;
+	border-bottom: 1px solid var(--textColor);
 }
 
 /*  CV */
@@ -417,7 +414,7 @@ td {
 .profile-image img {
 	width: 130px;
 	margin-right: 1rem;
-	border: 2px solid #bec2c9;
+	border: 2px solid var(--textColor);
 	border-radius: 5px;
 }
 
@@ -436,7 +433,7 @@ td {
 	border-radius: 50%;
 }
 .contacts a img:hover {
-	background-color: #f32d29;
+	background-color: var(--titleColor);
 }
 
 .profile-column {
@@ -447,7 +444,7 @@ td {
 .seperator-line {
 	width: 100%;
 	height: 0.2rem;
-	background-color: #bec2c9;
+	background-color: var(--textColor);
 	margin: 0.5rem 0;
 }
 
@@ -467,7 +464,7 @@ td {
 	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
-	color: #bec2c9;
+	color: var(--textColor);
 	width: 29%;
 	margin: 0.5rem;
 }
@@ -501,7 +498,7 @@ td {
 	.menubar {
 		width: 25px;
 		height: 3px;
-		background-color: #bec2c9;
+		background-color: var(--textColor);
 		border-radius: 2px;
 		margin: 5px 0;
 	}
