@@ -11,58 +11,61 @@ import Loading from '../common/Loading';
 import { connect } from 'react-redux';
 
 class Showcase extends Component {
-  componentDidMount() {
-    this.props.getProfile();
+	componentDidMount() {
+		this.props.getProfile();
 
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
-  }
+		if (this.props.auth.isAuthenticated) {
+			this.props.history.push('/dashboard');
+		}
+	}
 
-  render() {
-    const { profile, loading } = this.props.profile;
+	render() {
+		const { profile, loading } = this.props.profile;
 
-    let showcaseContent = {};
+		let showcaseContent = {};
 
-    if (profile === null || loading) {
-      showcaseContent = <Loading />;
-    } else {
-      showcaseContent = null;
-      if (profile.length > 0) {
-        showcaseContent = profile.map(item => (
-          <div key={item._id}>
-            <AboutMe bio={item.bio} />
-            <Portfolio portfolio={item.portfolio} />
-            <Skill skill={item.skill} />
-            <ContactMe
-              mobile={item.contactNumber}
-              email={item.contactEmail}
-              title={item.contactTitle}
-            />
-          </div>
-        ));
-      }
-    }
+		if (profile === null || loading) {
+			showcaseContent = <Loading />;
+		} else {
+			showcaseContent = null;
+			if (profile.length > 0) {
+				showcaseContent = profile.map(item => {
+					const contact = {
+						mobile: item.contactNumber,
+						email: item.contactEmail,
+						title: item.contactTitle
+					};
+					return (
+						<div key={item._id}>
+							<AboutMe bio={item.bio} />
+							<Portfolio portfolio={item.portfolio} />
+							<Skill skill={item.skill} />
+							<ContactMe contact={contact} />
+						</div>
+					);
+				});
+			}
+		}
 
-    return (
-      <header id='showcase'>
-        <div className='container'>{showcaseContent}</div>
-      </header>
-    );
-  }
+		return (
+			<header id='showcase'>
+				<div className='container'>{showcaseContent}</div>
+			</header>
+		);
+	}
 }
 
 Showcase.propTypes = {
-  profile: PropTypes.object,
-  getProfile: PropTypes.func.isRequired
+	profile: PropTypes.object,
+	getProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  profile: state.profile
+	auth: state.auth,
+	profile: state.profile
 });
 
 export default connect(
-  mapStateToProps,
-  { getProfile }
+	mapStateToProps,
+	{ getProfile }
 )(Showcase);
