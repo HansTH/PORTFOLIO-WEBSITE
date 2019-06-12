@@ -62,46 +62,22 @@ class App extends Component {
 							<Route exact path='/login' component={Login} />
 							<Route exact path='/cv' component={CV} />
 							<Switch>
-								<PrivateRoute exact path='/dashboard' component={Dashboard} />
-								{/* </Switch>
-              <Switch> */}
+								<PrivateRoute path='/dashboard' component={Dashboard} />
 								<PrivateRoute
-									exact
 									path='/create-profile'
 									component={CreateProfile}
 								/>
-								{/* </Switch>
-              <Switch> */}
+								<PrivateRoute path='/edit-profile' component={EditProfile} />
+								<PrivateRoute path='/add-edit-skill' component={AddEditSkill} />
 								<PrivateRoute
-									exact
-									path='/edit-profile'
-									component={EditProfile}
-								/>
-								{/* </Switch>
-              <Switch> */}
-								<PrivateRoute
-									exact
-									path='/add-edit-skill'
-									component={AddEditSkill}
-								/>
-								{/* </Switch>
-              <Switch> */}
-								<PrivateRoute
-									exact
 									path='/add-edit-portfolio'
 									component={AddEditPortfolio}
 								/>
-								{/* </Switch>
-              <Switch> */}
 								<PrivateRoute
-									exact
 									path='/add-edit-experience'
 									component={CreateEditExperience}
 								/>
-								{/* </Switch>
-              <Switch> */}
 								<PrivateRoute
-									exact
 									path='/add-edit-education'
 									component={CreateEditEducation}
 								/>

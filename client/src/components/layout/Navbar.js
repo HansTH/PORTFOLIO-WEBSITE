@@ -83,7 +83,11 @@ class Navbar extends Component {
 					</a>
 				</li>
 				<li>
-					<Link to={'/cv'} className='text-color btn-hover'>
+					<Link
+						to={'/cv'}
+						className='text-color btn-hover'
+						onClick={this.toggleMenubar}
+					>
 						CV
 					</Link>
 				</li>
