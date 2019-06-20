@@ -20,7 +20,6 @@ class CV extends Component {
 		let cvContent = {};
 		if (profile === null || loading) {
 			cvContent = <Loading />;
-			console.log('loading');
 		} else {
 			if (profile.length > 0) {
 				cvContent = profile.map((item, index) => {
@@ -51,10 +50,8 @@ class CV extends Component {
 						</div>
 					);
 				});
-				console.log('true');
 			} else {
 				cvContent = null;
-				console.log('false');
 			}
 		}
 
