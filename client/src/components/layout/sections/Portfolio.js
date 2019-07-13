@@ -19,10 +19,16 @@ export default function Portfolio({ portfolio }) {
 						/>
 					</div>
 					<div className='portfolio-content '>
-						<h4 className='text-primary'>{item.appTitle}</h4>
+						{item.appCategory === 'Web' ? (
+							<a href={`https:\\${item.appTitle}`}>
+								<h4 className='text-primary'>{item.appTitle}</h4>
+							</a>
+						) : (
+							<h4 className='text-primary'>{item.appTitle}</h4>
+						)}
 						<p className='text-color my-0 display-1'>{item.appInfo}</p>
 						<div style={{ display: 'flex', alignItems: 'baseline' }}>
-							<h4 className='text-primary display-1'>Category </h4>
+							<h4 className='text-primary display-1'>Categorie </h4>
 							<p className='text-color display-1'>&nbsp;- {item.appCategory}</p>
 						</div>
 						<h4 className='text-primary display-1 '>Skills</h4>
@@ -41,7 +47,13 @@ export default function Portfolio({ portfolio }) {
 			) : (
 				<div key={item._id} className=' portfolio-item my-1'>
 					<div className='portfolio-content '>
-						<h4 className='text-primary'>{item.appTitle}</h4>
+						{item.appCategory === 'Web' ? (
+							<a href={`https:\\${item.appTitle}`}>
+								<h4 className='text-primary'>{item.appTitle}</h4>
+							</a>
+						) : (
+							<h4 className='text-primary'>{item.appTitle}</h4>
+						)}
 						<p className='text-color my-0 display-1'>{item.appInfo}</p>
 						<div style={{ display: 'flex', alignItems: 'baseline' }}>
 							<h4 className='text-primary display-1'>Category </h4>
