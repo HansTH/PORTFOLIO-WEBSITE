@@ -20,7 +20,7 @@ export default function Portfolio({ portfolio }) {
 					</div>
 					<div className='portfolio-content '>
 						{item.appCategory === 'Web' ? (
-							<a href={`https:\\${item.appTitle}`}>
+							<a href={`https://${item.appTitle}`}>
 								<h4 className='text-primary'>{item.appTitle}</h4>
 							</a>
 						) : (
@@ -48,7 +48,7 @@ export default function Portfolio({ portfolio }) {
 				<div key={item._id} className=' portfolio-item my-1'>
 					<div className='portfolio-content '>
 						{item.appCategory === 'Web' ? (
-							<a href={`https:\\${item.appTitle}`}>
+							<a href={`https://${item.appTitle}`}>
 								<h4 className='text-primary'>{item.appTitle}</h4>
 							</a>
 						) : (
